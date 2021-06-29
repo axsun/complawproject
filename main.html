@@ -1,1 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>UD-105 Helper</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main>
+      <h1>Welcome to the UD-105 Helper</h1>
+     <!--  Start of Sections 1+2     -->
+      <div>
+       <h2> Sections 1 & 2: Defendant Information and Denials</h2>
 
+<!--  Are you an attorney?        -->
+       <section>
+         <h3>1. Are you an attorney?</h3>
+         <form action = "/action_page.php" method = "get">
+            <label for="attorney">
+              <input id="attorney" value="attorney" type="radio" name="attorney-not_attorney">Yes
+            </label>
+            <label for="not_attorney">
+              <input id="not_attorney" value="not_attorney" type="radio" name="attorney-not_attorney">No
+             </label>
+          </form>
+       </section>
+       <hr>
+
+<!--  Attorney -->
+       <section>
+         <h4>Yes, I am an attorney</h4>
+          <form action = "/action_page.php" method = "get">
+            <label for="attorneyname">Attorney Name:</label>
+            <input type="text" id="attorneyname" name="attorneyname"><br><br>
+            <label for="barnumber">Bar Registration Number:</label>
+            <input type="text" id="barnumber" name="barnumber"><br><br>
+            <label for="firmname">Firm Name:</label>
+            <input type="text" id="firmname" name="firmname"><br><br>
+            <label for="client">Attorney For:</label>
+            <input type="text" id="client" name="client"><br><br>
+            <label for="attorneystreetaddress">Street Address:</label>
+            <input type="text" id="attorneystreetaddress" name="attorneystreetaddress"><br><br>
+            <label for="attorneycity">City:</label>
+            <input type="text" id="attorneycity" name="attorneycity"><br><br>
+            <label for="attorneytelnum">Telephone Number:</label>
+            <input type="text" id="attorneytelnum" name="attorneytelnum"><br><br>
+            <label for="attorneyemail">Email Address:</label>
+            <input type="text" id="attorneyemail" name="attorneyemail"><br><br>
+             <input type="submit" value="Submit">
+          </form>
+       </section>
+       <hr>
+
+<!--  Not Attorney -->
+        <section>
+          <h4>No, I am not an attorney</h4>
+          <form action = "/action_page.php" method = "get">
+             <label for="residentname">Resident Name:</label>
+            <input type="text" id="residentname" name="residentname"><br><br>
+            <label for="residentstreetaddress">Street Address:</label>
+            <input type="text" id="residentstreetaddress" name="residentstreetaddress"><br><br>
+            <label for="residentcity">City:</label>
+            <input type="text" id="residentcity" name="residentcity"><br><br>
+            <label for="residenttelnum">Telephone Number:</label>
+            <input type="text" id="residenttelnum" name="residenttelnum"><br><br>
+            <label for="residentemail">Email Address:</label>
+            <input type="text" id="residentemail" name="residentemail"><br><br>
+            <input type="submit" value="Submit">
+          </form>
+       </section>
+       <hr>
+
+<!--  Defendant Information        -->
+       <section>
+         <form action = "/action_page.php" method = "get">
+          <label for="propertycounty">What county is the property located in?</label>
+            <input type="text" id="propertycounty" name="propertycounty"><br><br>
+           <label for="defendantname">Please input the name(s) of the resident(s) (separated by commas) responding to property owner (aka Plaintiff)</label>
+            <input type="text" id="defendantname" name="defendantname"><br><br>
+           <input type="submit" value="Submit">
+         </form>
+       </section>
+      </div>
+<!--    end of sections 1+2    -->
+    </main>
+  </body>
+</html>
