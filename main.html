@@ -3,8 +3,10 @@
   <head>
     <title>UD-105 Helper</title>
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="epilog.js"></script>
+    <script type="text/javascript" src="worksheets.js"></script>
   </head>
-  <body>
+  <body class="content-wrap">
     <main>
       <h1>Welcome to the UD-105 Helper</h1>
      <!--  Start of Sections 1+2     -->
@@ -13,42 +15,40 @@
 
 <!--  Are you an attorney?        -->
        <section>
-         <h3>1. Are you an attorney?</h3>
-         <!--  Need to change this part for action and get methods to inform epilog       -->
-         <form action = "/action_page.php" method = "get">
-            <label for="attorney">
-              <input id="attorney" value="attorney" type="radio" name="attorney-not_attorney">Yes
-            </label>
-            <label for="not_attorney">
-              <input id="not_attorney" value="not_attorney" type="radio" name="attorney-not_attorney">No
-             </label>
-          </form>
+         <h4>1. Are you an attorney?</h4>
+<!--          <form action = "/action_page.php" method = "get"> -->
+          <label for="attorney">
+            <input id="attorney" value="attorney" type="radio" name="attorney-not_attorney">Yes
+          </label>
+          <label for="not_attorney">
+            <input id="not_attorney" value="not_attorney" type="radio" name="attorney-not_attorney">No
+           </label>
+<!--           </form> -->
        </section>
        <hr>
 
 <!--  Attorney -->
        <section>
          <h4>Yes, I am an attorney</h4>
-         <!--  Need to change this part for action and get methods to inform epilog       -->
-          <form action = "/action_page.php" method = "get">
-            <label for="attorneyname">Attorney Name:</label>
-            <input type="text" id="attorneyname" name="attorneyname"><br><br>
-            <label for="barnumber">Bar Registration Number:</label>
-            <input type="text" id="barnumber" name="barnumber"><br><br>
-            <label for="firmname">Firm Name:</label>
-            <input type="text" id="firmname" name="firmname"><br><br>
-            <label for="client">Attorney For:</label>
-            <input type="text" id="client" name="client"><br><br>
-            <label for="attorneystreetaddress">Street Address:</label>
-            <input type="text" id="attorneystreetaddress" name="attorneystreetaddress"><br><br>
-            <label for="attorneycity">City:</label>
-            <input type="text" id="attorneycity" name="attorneycity"><br><br>
-            <label for="attorneytelnum">Telephone Number:</label>
-            <input type="text" id="attorneytelnum" name="attorneytelnum"><br><br>
-            <label for="attorneyemail">Email Address:</label>
-            <input type="text" id="attorneyemail" name="attorneyemail"><br><br>
-             <input type="submit" value="Submit">
-          </form>
+<!--           <form action = "/action_page.php" method = "get"> -->
+          <label for="attorneyname">Attorney Name:</label>
+          <input type="text" id="attorneyname" name="attorneyname"><br><br>
+          <label for="barnumber">Bar Registration Number:</label>
+          <input type="text" id="barnumber" name="barnumber"><br><br>
+          <label for="firmname">Firm Name:</label>
+          <input type="text" id="firmname" name="firmname"><br><br>
+          <label for="client">Attorney For:</label>
+          <input type="text" id="client" name="client"><br><br>
+          <label for="attorneystreetaddress">Street Address:</label>
+          <input type="text" id="attorneystreetaddress" name="attorneystreetaddress"><br><br>
+          <label for="attorneycity">City:</label>
+          <input type="text" id="attorneycity" name="attorneycity"><br><br>
+          <label for="attorneytelnum">Telephone Number:</label>
+          <input type="text" id="attorneytelnum" name="attorneytelnum"><br><br>
+          <label for="attorneyemail">Email Address:</label>
+          <input type="text" id="attorneyemail" name="attorneyemail"><br><br>
+           <input type="submit" value="Submit">
+<!--           </form> -->
        </section>
        <hr>
 
@@ -73,17 +73,160 @@
 
 <!--  Defendant Information        -->
        <section>
-         <!--  Need to change this part for action and get methods to inform epilog       -->
-         <form action = "/action_page.php" method = "get">
-          <label for="propertycounty">What county is the property located in?</label>
-            <input type="text" id="propertycounty" name="propertycounty"><br><br>
-           <label for="defendantname">Please input the name(s) of the resident(s) (separated by commas) responding to property owner (aka Plaintiff)</label>
-            <input type="text" id="defendantname" name="defendantname"><br><br>
-           <input type="submit" value="Submit">
-         </form>
+        <label for="propertycounty">What county is the property located in?</label>
+          <input type="text" id="propertycounty" name="propertycounty"><br><br>
+        <label for="defendantname">Please input the name(s) of the resident(s) (separated by commas) responding to property owner (aka Plaintiff)</label>
+         <input type="text" id="defendantname" name="defendantname"><br><br>
+        <input type="submit" value="Submit"><br><br>
+
+        <h4>2. Is your landlord asking for more than $1,000?</h4>
+        <label for="claimisgreaterthan1000">
+          <input id="claimisgreaterthan1000" value="yes" type="radio" name="claimvalue">Yes
+        </label>
+        <label for="notclaimisgreaterthan1000">
+          <input id="notclaimisgreaterthan1000" value="no" type="radio" name="claimvalue">No
+        </label>
+         <h2 style="color:red">general denial placeholder</h2>
        </section>
       </div>
+
 <!--    end of sections 1+2    -->
+
+
+<!--    SECTION 3   -->
+      <div>
+        <h4>3a. Did you tell your landlord about anything that makes your home uninhabitable?</h4>
+        <label for="informedlandlord">
+          <input id="informedlandord" value="informedlandlord" type="radio" name="informedlandlord-notinformedlandlord">Yes
+        </label>
+        <label for="notinformedlandlrod">
+          <input id="notinformedlandlrod" value="notinformedlandlrod" type="radio" name="informedlandlord-notinformedlandlord">No
+        </label><br><br>
+        <!-- If yes, then answer the following -->
+        <input type="checkbox" id="leakyceiling" name="leakyceiling" value="yes">
+        <label for="leakyceiling"> Leaking ceiling or walls</label><br>
+        <input type="checkbox" id="badsmokedetector" name="badsmokedetector" value="yes">
+        <label for="badsmokedetector">Missing/broken smoke detector</label><br>
+        <input type="checkbox" id="badplasterorpaint" name="badplasterorpaint" value="yes">
+        <label for="badplasterorpaint">Falling plaster/peeling paint</label><br>
+        <input type="checkbox" id="infestation" name="infestation" value="yes">
+        <label for="infestation">Infestation of roaches/rodents/insect/vermin</label><br>
+        <input type="checkbox" id="badheat" name="badheat" value="yes">
+        <label for="badheat">Lack of/Inadequate heat
+        </label><br>
+        <input type="checkbox" id="uncleancommonarea" name="uncleancommonarea" value="yes">
+        <label for="uncleancommonarea">Common areas unclean
+        </label><br>
+        <input type="checkbox" id="nohotwater" name="nohotwater" value="yes">
+        <label for="nohotwater">Lack of/Inadequate hot water
+        </label><br>
+        <input type="checkbox" id="notrashcollection" name="notrashcollection" value="yes">
+        <label for="notrashcollection">Inadequate trash receptacles/collection
+        </label><br>
+        <input type="checkbox" id="nogas" name="nogas" value="yes">
+        <label for="nogas">Defective/Inadequate gas services
+        </label><br>
+        <input type="checkbox" id="unsafestairway" name="unsafestairway" value="yes">
+        <label for="unsafestairway">Unsafe stairways/railings
+        </label><br>
+        <input type="checkbox" id="badwindowordoor" name="badwindowordoor" value="yes">
+        <label for="badwindowordoor">Missing/broken windows or doors</label><br>
+        <input type="checkbox" id="nosecuritylocks" name="nosecuritylocks" value="yes">
+        <label for="nosecuritylocks">Inadequate security locks
+        </label><br>
+        <input type="checkbox" id="badwindowscreen" name="badwindowscreen" value="yes">
+        <label for="badwindowscreen">Missing/torn window screens</label><br>
+        <input type="checkbox" id="badelectricalwiring" name="badelectricalwiring" value="yes">
+        <label for="badelectricalwiring">Defective electrical wiring</label><br>
+         <input type="checkbox" id="holes" name="holes" value="yes">
+        <label for="holes">Hole(s) in walls/floor/carpet</label><br>
+         <input type="checkbox" id="leadhazards" name="leadhazards" value="yes">
+        <label for="leadhazards">Lead Hazards
+        </label><br>
+         <input type="checkbox" id="badplumbing" name="badplumbing" value="yes">
+        <label for="badplumbing">Defective/leaking plumbing
+        </label><br>
+         <input type="checkbox" id="mold" name="mold" value="yes">
+        <label for="mold">Mold
+        </label><br>
+         <input type="checkbox" id="other" name="other" value="yes">
+        <label for="other">Other:
+          <input type="text" id="other" name="other">
+        </label><br><br><hr>
+
+        <!-- question 3b -->
+        <h4>Has someone from a government agency ordered your landlord to repair a condition in the home?</h4>
+        <label for="GovernmentOrderedRepair">
+          <input id="GovernmentOrderedRepair" value="yes" type="radio" name="GovernmentOrderedRepair-YesNo">Yes
+        </label>
+        <label for="NotGovernmentOrderedRepair">
+          <input id="NotGovernmentOrderedRepair" value="no" type="radio" name="GovernmentOrderedRepair-YesNo">No
+        </label><br><br>
+        <!--If yes-->
+        <h4>Did over 60 days pass after the notice from the government agency without the ordered repair being made?</h4>
+        <label for="60dayminimum">
+          <input id="60dayminimum" value="yes" type="radio" name="60dayminimum-YesNo">Yes
+        </label>
+        <label for="not60dayminimum">
+          <input id="not60dayminimum" value="no" type="radio" name="60dayminimum-YesNo">No
+        </label><br><br>
+
+        <h4>Did Plaintiff increase, demand or collect rent when uninhabitable conditions exist(ed) and have not been repaired/abated within 35 days after written notice from a public officer or employee to repair or abate them?</h4>
+        <label for="IllegalRentCollection">
+          <input id="IllegalRentCollection" value="yes" type="radio" name="IllegalRentCollection-YesNo">Yes
+        </label>
+        <label for="NotIllegalRentCollection">
+          <input id="NotIllegalRentCollection" value="no" type="radio" name="IllegalRentCollection-YesNo">No
+        </label><br><br>
+
+
+        <h4>This dwelling/unit has serious health, safety, fire or building  violations with a written notice from a governmental agency to fix the situation</h4>
+        <label for="ViolationCitation">
+          <input id="ViolationCitation" value="yes" type="radio" name="ViolationCitation-YesNo">Yes
+        </label>
+        <label for="NotViolationCitation">
+          <input id="NotViolationCitation" value="no" type="radio" name="ViolationCitation-YesNo">No
+        </label><br><br>
+        <!--If yes-->
+        <h4>Did over 6 months pass after the notice from the government agency without the violation being fixed?</h4>
+        <label for="60dmonthminimum">
+          <input id="60dmonthminimum" value="yes" type="radio" name="60dmonthminimum-YesNo">Yes
+        </label>
+        <label for="not60dmonthminimum">
+          <input id="not60dmonthminimum" value="no" type="radio" name="60dmonthminimum-YesNo">No
+        </label><br><br>
+        <h4 style="color:red">Placeholder for: A substandard order was issued and the Plaintiff is attempting to evict the tenant in violation of the Long Beach Municipal Code</h4>
+
+        <!-- QUESTION 3B -->
+        <h4>3b. Check all of the following that are true.</h4>
+        <input type="checkbox" id="knownrepair" name="knownrepair" value="yes">
+        <label for="repair">There was a needed repair that your landlord knew about and did not provide within a reasonable time
+        </label><br>
+        <input type="checkbox" id="tenantpaid" name="tenantpaid" value="yes">
+        <label for="tenantpaid">You paid for said repair out of your own pocket and therefore took the cost out of the rent, but your landlord did not take this deduction into account for the amount that he/she is requesting
+        </label><br>
+        <input type="checkbox" id="rentdeduction" name="rentdeduction" value="yes">
+        <label for="rentdeduction">You and your landlord agreed verbally or in writing that you could repair the conditions in the unit and deduct the cost of repairs from the rent.
+        </label><br>
+        <input type="checkbox" id="utilitydeduction" name="utilitydeduction" value="yes">
+        <label for="utilitydeduction">Did you pay a utility bill that your landlord is supposed to pay for and so you deducted it from the rent?
+        </label><br>
+      </div>
+      
     </main>
+  </body>
+</html>
+    <!--=======================================================================-->
+
+    <textarea id='lambda' type='text/hrf' style='display:none'>
+
+    </textarea>
+    <!--=======================================================================-->
+    <textarea id='library' type='text/hrf' style='display:none'>
+      attorney :- holds(attorney-notattorney, yes)
+      style(yesattorney,display,"") :- attorney
+      style(yesattorney,display,"") :- ~attorney
+    </textarea>
+    <!--=======================================================================-->
   </body>
 </html>
