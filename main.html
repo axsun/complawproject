@@ -94,13 +94,13 @@
 
 
 <!--    SECTION 3   -->
-      <div>
+      <div id="3asubsection">
         <h4>3a. Did you tell your landlord about anything that makes your home uninhabitable?</h4>
         <label for="informedlandlord">
-          <input id="informedlandord" value="informedlandlord" type="radio" name="informedlandlord-notinformedlandlord">Yes
+          <input id="informedlandlord" value="informedlandlord" type="radio" name="informedlandlord-notinformedlandlord">Yes
         </label>
-        <label for="notinformedlandlrod">
-          <input id="notinformedlandlrod" value="notinformedlandlrod" type="radio" name="informedlandlord-notinformedlandlord">No
+        <label for="notinformedlandlord">
+          <input id="notinformedlandlord" value="notinformedlandlord" type="radio" name="informedlandlord-notinformedlandlord">No
         </label><br><br>
         <!-- If yes, then answer the following -->
         <input type="checkbox" id="leakyceiling" name="leakyceiling" value="yes">
@@ -153,7 +153,8 @@
         <label for="other">Other:
           <input type="text" id="other" name="other">
         </label><br><br><hr>
-
+      </div>
+      <div>
         <!-- question 3b -->
         <h4>Has someone from a government agency ordered your landlord to repair a condition in the home?</h4>
         <label for="GovernmentOrderedRepair">
@@ -212,13 +213,17 @@
         <label for="utilitydeduction">Did you pay a utility bill that your landlord is supposed to pay for and so you deducted it from the rent?
         </label><br>
       </div>
-      
+
     </main>
   </body>
 </html>
     <!--=======================================================================-->
 
     <textarea id='lambda' type='text/hrf' style='display:none'>
+      value(informedlandlord, "")
+      style(3asubsection,display,none)
+      ~holds(informedlandlord,yes)
+      value(uninhabitable,no)
 
     </textarea>
     <!--=======================================================================-->
@@ -226,6 +231,32 @@
       attorney :- holds(attorney-notattorney, yes)
       style(yesattorney,display,"") :- attorney
       style(yesattorney,display,"") :- ~attorney
+
+      value(uninhabitable,yes) :- holds(leakyceiling) & holds(informedlandlord)
+      value(uninhabitable,yes) :- holds(badsmokedetector) & holds(informedlandlord)
+      value(uninhabitable,yes) :- holds(badplasterorpaint) & holds(informedlandlord)
+      value(uninhabitable,yes) :- holds(infestation) & holds(informedlandlord)
+      value(uninhabitable,yes) :- holds(badheat) & holds(informedlandlord)
+      value(uninhabitable,yes) :- holds(uncleancommonarea) & holds(informedgitlandlord)
+      value(uninhabitable,yes) :- holds(nohotwater) & holds(informedlandlord)
+      value(uninhabitable,yes) :- holds(notrashcollection) & holds(informedlandlord)
+      value(uninhabitable,yes) :- holds(nogas) & holds(informedlandlord)
+      value(uninhabitable,yes) :- holds(unsafestairway) & holds(informedlandlord)
+      value(uninhabitable,yes) :- holds(badwindowscreen) & holds(informedlandlord)
+      value(uninhabitable,yes) :- holds(badelectricalwiring) & holds(informedlandlord)
+      value(uninhabitable,yes) :- holds(holes) & holds(informedlandlord)
+      value(uninhabitable,yes) :- holds(leadhazards) & holds(informedlandlord)
+      value(uninhabitable,yes) :- holds(badplumbing) & holds(informedlandlord)
+      value(uninhabitable,yes) :- holds(mold) & holds(informedlandlord)
+      value(uninhabitable,yes) :- holds(other) & holds(informedlandlord)
+
+      informedlandlord :- select(informedlandlord,yes)
+      select(informedlandlord,X) :: value(informedlandlord,X)
+      select(informedlandlord,X) :: value(informedlandlord,Y) ==> ~value(informedlandlord,Y)
+      style(3asubsection,display,visible) :- holds(informedlandlord,yes)
+
+      select(leakyceiling) :: holds(leakyceiling)
+      select(badsmokedetector) :: holds(badsmokedetector)
     </textarea>
     <!--=======================================================================-->
   </body>
