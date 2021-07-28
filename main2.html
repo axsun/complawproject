@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>UD-105 Helper</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="epilog.js"></script>
+    <script type="text/javascript" src="worksheets.js"></script>
+  </head>
+  <body class="content-wrap" onload='initialize()'>
+    <main>
+      <h1>Welcome to the UD-105 Helper</h1>
+     <!--  Start of Sections 1+2     -->
+      <h2> Sections 1 & 2: Defendant Information and Denials</h2>
+<!--  Are you an attorney?        -->
+      <section>
+        <label>1. Are you an attorney?</label>
+        <select id="attorney" onchange="modselector(this)">
+           <option value="unknown"></option>
+           <option value="yes">Yes</option>
+           <option value="no">No</option>
+        </select>
+        <hr>
+      </section>
+
+<!--  Attorney -->
+      <section id="attorney(yes)" style='display:none'>
+        <h4>Yes, I am an attorney</h4>
+<!--           <form action = "/action_page.php" method = "get"> -->
+        <label for="attorneyname">Attorney Name:</label>
+        <input type="text" id="attorneyname" onchange="modtext(this)" autoquote><br><br>
+        <label for="barnumber">Bar Registration Number:</label>
+        <input type="text" id="barnumber" onchange="modtext(this)" autoquote><br><br>
+        <label for="firmname">Firm Name:</label>
+        <input type="text" id="firmname" onchange="modtext(this)" autoquote><br><br>
+        <label for="client">Attorney For:</label>
+        <input type="text" id="client" onchange="modtext(this)" autoquote><br><br>
+        <label for="attorneystreetaddress">Street Address:</label>
+        <input type="text" id="attorneystreetaddress" onchange="modtext(this)" autoquote><br><br>
+        <label for="attorneycity">City:</label>
+        <input type="text" id="attorneycity" onchange="modtext(this)" autoquote><br><br>
+        <label for="attorneytelnum">Telephone Number:</label>
+        <input type="text" id="attorneytelnum" onchange="modtext(this)" autoquote><br><br>
+        <label for="attorneyemail">Email Address:</label>
+        <input type="text" id="attorneyemail" onchange="modtext(this)" autoquote><br><br>
+        <input type="submit" value="Submit">
+<!--           </form> -->
+        <hr>
+      </section>
+
+<!--  Not Attorney -->
+        <section id="attorney(no)" style='display:none'>
+          <h4>No, I am not an attorney</h4>
+          <!-- <form action = "/action_page.php" method = "get"> -->
+          <label for="residentname">Resident Name:</label>
+          <input type="text" id="residentname" onchange="modtext(this)" autoquote><br><br>
+          <label for="residentstreetaddress">Street Address:</label>
+          <input type="text" id="residentstreetaddress" onchange="modtext(this)" autoquote><br><br>
+          <label for="residentcity">City:</label>
+          <input type="text" id="residentcity" onchange="modtext(this)" autoquote><br><br>
+          <label for="residenttelnum">Telephone Number:</label>
+          <input type="text" id="residenttelnum" onchange="modtext(this)" autoquote><br><br>
+          <label for="residentemail">Email Address:</label>
+          <input type="text" id="residentemail" onchange="modtext(this)" autoquote><br><br>
+          <input type="submit" value="Submit">
+          <!-- </form> -->
+          <hr>
+        </section>
+
+
+<!--  Defendant Information        -->
+       <section>
+        <label for="propertycounty">What county is the property located in?</label>
+          <input type="text" id="propertycounty" onchange="modtext(this)" autoquote><br><br>
+        <label for="defendantname">Please input the name(s) of the resident(s) (separated by commas) responding to property owner (aka Plaintiff)</label>
+         <input type="text" id="defendantname" onchange="modtext(this)" autoquote><br><br>
+        <input type="submit" value="Submit"><br><br>
+
+        <label>Is your landlord asking for more than $1000?</label>
+          <select id="claimisgreaterthan1000" onchange="modselector(this)">
+            <option value="unknown"></option>
+            <option value="no">Yes</option>
+            <option value="yes">No</option>
+          </select><br><br>
+       </section>
+
+       <section id="generaldenial(yes)" style="display:none">
+         <h3>General Denial</h3>
+         <p>You are proceeding to file a general denial, which accounts for claims from the landlord for less than $1000, unless you have detailed specific refutations (or consent to some of the claim)</p>
+         <label>Do you generally deny each statement of the complaint and of the form UD-101 filed by your landlord?</label>
+         <button id="generaldenial" onclick="modbutton(this)">Yes, Proceed With General Denial</button>
+         <button id="notgeneraldenial" onclick="modbutton(this)">No, I only wish to refute specific parts of the claim</button>
+       </section>
+
+       <section id="generaldenial(no)" style="display:none">
+         <h3>Specific Denials</h3>
+         <label>Are there some parts of the claim from your landlord that you deny?</label>
+         <select id="specificdenials" onchange="modselector(this)">
+           <option value="unknown"></option>
+           <option value="yes">Yes</option>
+           <option value="no">No</option>
+         </select><br><br>
+       </section>
+
+       <section id="disagreewithassertions" style="display:none">
+         <label>Are there some parts of the claim from your landlord that you deny because you specifically disagree with the statements made?</label>
+         <select id="specificdenials" onchange="modselector(this)">
+           <option value="unknown"></option>
+           <option value="yes">Yes</option>
+           <option value="no">No</option>
+         </select><br><br>
+       </section>
+
+       <section id="disagreewithassertions(yes)" style="display:none">
+         <label>Please list specific paragraphs of your landlord's assertions that you disagree with:</label>
+         <input type="text" id="assertiondenialslist" onchange="modtext(this)" autoquote></input><br><br>
+         <input type="submit" value="Submit"><br><br>
+         <label>Are there some parts of the claim that you deny because you just don't know about assertions made by the plaintiff?</label>
+         <select id="unsureassertions" onchange="modselector(this)">
+           <option value="unknown"></option>
+           <option value="yes">Yes</option>
+           <option value="no">No</option>
+         </select><br><br>
+         <div id="unsureassertions(yes)">
+           <label>Please list specific paragraphs of your landlord's assertions that you don't know about:</label>
+           <input type="text" id="unknownassertionslist" onchange="modtext(this)" autoquote></input><br><br>
+           <input type="submit" value="Submit"><br><br>
+         </div>
+       </section>
+
+       <section id="mandatorycoversheet" style="display:none">
+         <label>Did you get the mandatory cover sheet from your landlord?</label>
+         <select id="receivedcoversheet" onchange="modselector(this)">
+           <option value="unknown"></option>
+           <option value="yes">Yes</option>
+           <option value="no">No</option>
+         </select><br><br>
+       </section>
+
+
+<!--    end of sections 1+2    -->
+
+
+<!--    SECTION 3   -->
+      <section id="3asubsection">
+        <div id="3ayesno">
+          <label>3a. Did you tell your landlord about anything that makes your home uninhabitable?</label>
+            <select id="informedlandlord" onchange="modselector(this)">
+              <option value="unknown"></option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select><br><br>
+        </div>
+        <div id="3achoose" style='display:none'>
+          <!-- If yes, then answer the following -->
+          <input type="checkbox" id="leakyceiling" name="leakyceiling" value="yes">
+          <label for="leakyceiling"> Leaking ceiling or walls</label><br>
+          <input type="checkbox" id="badsmokedetector" name="badsmokedetector" value="yes">
+          <label for="badsmokedetector">Missing/broken smoke detector</label><br>
+          <input type="checkbox" id="badplasterorpaint" name="badplasterorpaint" value="yes">
+          <label for="badplasterorpaint">Falling plaster/peeling paint</label><br>
+          <input type="checkbox" id="infestation" name="infestation" value="yes">
+          <label for="infestation">Infestation of roaches/rodents/insect/vermin</label><br>
+          <input type="checkbox" id="badheat" name="badheat" value="yes">
+          <label for="badheat">Lack of/Inadequate heat
+          </label><br>
+          <input type="checkbox" id="uncleancommonarea" name="uncleancommonarea" value="yes">
+          <label for="uncleancommonarea">Common areas unclean
+          </label><br>
+          <input type="checkbox" id="nohotwater" name="nohotwater" value="yes">
+          <label for="nohotwater">Lack of/Inadequate hot water
+          </label><br>
+          <input type="checkbox" id="notrashcollection" name="notrashcollection" value="yes">
+          <label for="notrashcollection">Inadequate trash receptacles/collection
+          </label><br>
+          <input type="checkbox" id="nogas" name="nogas" value="yes">
+          <label for="nogas">Defective/Inadequate gas services
+          </label><br>
+          <input type="checkbox" id="unsafestairway" name="unsafestairway" value="yes">
+          <label for="unsafestairway">Unsafe stairways/railings
+          </label><br>
+          <input type="checkbox" id="badwindowordoor" name="badwindowordoor" value="yes">
+          <label for="badwindowordoor">Missing/broken windows or doors</label><br>
+          <input type="checkbox" id="nosecuritylocks" name="nosecuritylocks" value="yes">
+          <label for="nosecuritylocks">Inadequate security locks
+          </label><br>
+          <input type="checkbox" id="badwindowscreen" name="badwindowscreen" value="yes">
+          <label for="badwindowscreen">Missing/torn window screens</label><br>
+          <input type="checkbox" id="badelectricalwiring" name="badelectricalwiring" value="yes">
+          <label for="badelectricalwiring">Defective electrical wiring</label><br>
+          <input type="checkbox" id="holes" name="holes" value="yes">
+          <label for="holes">Hole(s) in walls/floor/carpet</label><br>
+          <input type="checkbox" id="leadhazards" name="leadhazards" value="yes">
+          <label for="leadhazards">Lead Hazards
+          </label><br>
+          <input type="checkbox" id="badplumbing" name="badplumbing" value="yes">
+          <label for="badplumbing">Defective/leaking plumbing
+          </label><br>
+          <input type="checkbox" id="mold" name="mold" value="yes">
+          <label for="mold">Mold
+          </label><br>
+          <input type="checkbox" id="other" name="other" value="yes">
+          <label for="other">Other:
+            <input type="text" id="other" name="other">
+          </label><br><br><hr>
+        </div>
+      </section>
+      <div>
+        <!-- question 3b -->
+        <h4>Has someone from a government agency ordered your landlord to repair a condition in the home?</h4>
+        <label for="GovernmentOrderedRepair">
+          <input id="GovernmentOrderedRepair" value="yes" type="radio" name="GovernmentOrderedRepair-YesNo">Yes
+        </label>
+        <label for="NotGovernmentOrderedRepair">
+          <input id="NotGovernmentOrderedRepair" value="no" type="radio" name="GovernmentOrderedRepair-YesNo">No
+        </label><br><br>
+        <!--If yes-->
+        <h4>Did over 60 days pass after the notice from the government agency without the ordered repair being made?</h4>
+        <label for="60dayminimum">
+          <input id="60dayminimum" value="yes" type="radio" name="60dayminimum-YesNo">Yes
+        </label>
+        <label for="not60dayminimum">
+          <input id="not60dayminimum" value="no" type="radio" name="60dayminimum-YesNo">No
+        </label><br><br>
+
+        <h4>Did Plaintiff increase, demand or collect rent when uninhabitable conditions exist(ed) and have not been repaired/abated within 35 days after written notice from a public officer or employee to repair or abate them?</h4>
+        <label for="IllegalRentCollection">
+          <input id="IllegalRentCollection" value="yes" type="radio" name="IllegalRentCollection-YesNo">Yes
+        </label>
+        <label for="NotIllegalRentCollection">
+          <input id="NotIllegalRentCollection" value="no" type="radio" name="IllegalRentCollection-YesNo">No
+        </label><br><br>
+
+
+        <h4>This dwelling/unit has serious health, safety, fire or building  violations with a written notice from a governmental agency to fix the situation</h4>
+        <label for="ViolationCitation">
+          <input id="ViolationCitation" value="yes" type="radio" name="ViolationCitation-YesNo">Yes
+        </label>
+        <label for="NotViolationCitation">
+          <input id="NotViolationCitation" value="no" type="radio" name="ViolationCitation-YesNo">No
+        </label><br><br>
+        <!--If yes-->
+        <h4>Did over 6 months pass after the notice from the government agency without the violation being fixed?</h4>
+        <label for="60dmonthminimum">
+          <input id="60dmonthminimum" value="yes" type="radio" name="60dmonthminimum-YesNo">Yes
+        </label>
+        <label for="not60dmonthminimum">
+          <input id="not60dmonthminimum" value="no" type="radio" name="60dmonthminimum-YesNo">No
+        </label><br><br>
+        <h4 style="color:red">Placeholder for: A substandard order was issued and the Plaintiff is attempting to evict the tenant in violation of the Long Beach Municipal Code</h4>
+
+        <!-- QUESTION 3B -->
+        <h4>3b. Check all of the following that are true.</h4>
+        <input type="checkbox" id="knownrepair" name="knownrepair" value="yes">
+        <label for="repair">There was a needed repair that your landlord knew about and did not provide within a reasonable time
+        </label><br>
+        <input type="checkbox" id="tenantpaid" name="tenantpaid" value="yes">
+        <label for="tenantpaid">You paid for said repair out of your own pocket and therefore took the cost out of the rent, but your landlord did not take this deduction into account for the amount that he/she is requesting
+        </label><br>
+        <input type="checkbox" id="rentdeduction" name="rentdeduction" value="yes">
+        <label for="rentdeduction">You and your landlord agreed verbally or in writing that you could repair the conditions in the unit and deduct the cost of repairs from the rent.
+        </label><br>
+        <input type="checkbox" id="utilitydeduction" name="utilitydeduction" value="yes">
+        <label for="utilitydeduction">Did you pay a utility bill that your landlord is supposed to pay for and so you deducted it from the rent?
+        </label><br>
+      </div>
+
+    </main>
+
+    <!--=======================================================================-->
+
+    <textarea id='lambda' type='text/hrf' style='display:none'>
+
+    </textarea>
+    <!--=======================================================================-->
+    <textarea id='library' type='text/hrf' style='display:none'>
+              %%%CONTROLLING THE DISPLAY OF FORM SECTIONS%%%
+
+      %%% ATTORNEY OR TENANT %%%
+      value(attorney, A) :- attorney(A)
+      select(attorney, A) :: attorney(A)
+      select(attorney, A) :: attorney(B) ==> ~attorney(B)
+      style(attorney(A), display, "") :- attorney(A)
+      style(attorney(A), display, none) :- ~attorney(A)
+
+      %%% 2. AMOUNT DEMANDED BY LANDLORD %%%
+      value(claimisgreaterthan1000, A) :- claimisgreaterthan1000(A)
+      select(claimisgreaterthan1000, A) :: claimisgreaterthan1000(A)
+      select(claimisgreaterthan1000, A) :: claimisgreaterthan1000(B) ==> ~claimisgreaterthan1000(B)
+      style(generaldenial(A), display, "") :- claimisgreaterthan1000(A)
+      style(generaldenial(A), display, none) :- ~claimisgreaterthan1000(A)
+
+      %%% GENERAL DENIAL NEED TO FIX THIS%%%
+      style(generaldenial(no), display, "") :- notgeneraldenial(1)
+      style(generaldenial(no), display, none) :- notgeneraldenial(0)
+      click(notgeneraldenial) :: notgeneraldenial(0) ==> ~notgeneraldenial(0) & notgeneraldenial(1)
+      click(generaldenial) :: generaldenial(0) ==> ~generaldenial(0) & generaldenial(1)
+
+      %%% SPECIFIC DENIALS %%%
+
+      %%% 3A. WAS THE LANDLORD INFORMED OF AN UNINHABITABLE CONDITION %%%
+      style(3achoose, display, "") :-informedlandlord(1)
+      style(3achoose, display, none) :-informedlandlord(0)
+      select(informedlandlord, A) :: informedlandlord(A)
+      select(informedlandlord, A) :: informedlandlord(B) ==> ~informedlandlord(B)
+
+      %%%KEEPING TRACK OF EACH CHECKBOX%%%
+
+      %%% QUESTION 3A -- BREACH OF WARRANT OF HABITABILITY %%%
+
+
+
+    </textarea>
+    <!--=======================================================================-->
+  </body>
+</html>
