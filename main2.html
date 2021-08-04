@@ -89,6 +89,7 @@
          <label>Do you generally deny each statement of the complaint and of the form UD-101 filed by your landlord?</label>
          <button id="generaldenial" onclick="modbutton(this)">Yes, Proceed With General Denial</button>
          <button id="notgeneraldenial" onclick="modbutton(this)">No, I only wish to refute specific parts of the claim</button>
+         <hr>
        </section>
 
        <section id="generaldenial(no)" style="display:none">
@@ -101,40 +102,70 @@
          </select><br><br>
        </section>
 
-       <section id="disagreewithassertions" style="display:none">
+       <section id="specificdenials(yes)" style="display:none">
          <label>Are there some parts of the claim from your landlord that you deny because you specifically disagree with the statements made?</label>
-         <select id="specificdenials" onchange="modselector(this)">
+         <select id="disagreewithassertions" onchange="modselector(this)">
            <option value="unknown"></option>
            <option value="yes">Yes</option>
            <option value="no">No</option>
          </select><br><br>
-       </section>
+         <section id="disagreewithassertions(yes)" style="display:none">
+           <label>Please list specific paragraphs of your landlord's assertions that you disagree with:</label>
+           <input type="text" id="assertiondenialslist" onchange="modtext(this)" autoquote></input><br><br>
+           <input type="submit" value="Submit"><br><br>
+         </section>
 
-       <section id="disagreewithassertions(yes)" style="display:none">
-         <label>Please list specific paragraphs of your landlord's assertions that you disagree with:</label>
-         <input type="text" id="assertiondenialslist" onchange="modtext(this)" autoquote></input><br><br>
-         <input type="submit" value="Submit"><br><br>
-         <label>Are there some parts of the claim that you deny because you just don't know about assertions made by the plaintiff?</label>
+         <label>Are there some parts of the claim that you deny because you just don't know about assertions made by your landlord?</label>
          <select id="unsureassertions" onchange="modselector(this)">
            <option value="unknown"></option>
            <option value="yes">Yes</option>
            <option value="no">No</option>
          </select><br><br>
-         <div id="unsureassertions(yes)">
+
+         <section id="unsureassertions(yes)" style = "display:none">
            <label>Please list specific paragraphs of your landlord's assertions that you don't know about:</label>
            <input type="text" id="unknownassertionslist" onchange="modtext(this)" autoquote></input><br><br>
            <input type="submit" value="Submit"><br><br>
-         </div>
+         </section>
+         <hr>
+
+         <section id="mandatorycoversheet">
+           <label>Did you get the mandatory cover sheet from your landlord?</label>
+           <select id="receivedcoversheet" onchange="modselector(this)">
+             <option value="unknown"></option>
+             <option value="yes">Yes</option>
+             <option value="no">No</option>
+           </select><br><br>
+         </section>
+
+         <section id="mandatorycoversheet(yes)" style="display:none">
+           <label>Were there any statements made in the mandatory cover sheet that you know are false?</label>
+           <select id="falsecoversheet" onchange="modselector(this)">
+             <option value="unknown"></option>
+             <option value="yes">Yes</option>
+             <option value="no">No</option>
+           </select><br><br>
+           <div id="falsecoversheet(yes)" style="display:none">
+             <label>Please list relevant paragraphs of the mandatory cover sheet that are false:</label>
+             <input type="text" id="unknownassertionslist" onchange="modtext(this)" autoquote></input><br><br>
+             <input type="submit" value="Submit"><br><br>
+           </div>
+           <label>Were there any statements made in the mandatory cover sheet that you didn't know anything about?</label>
+           <select id="unsurecoversheet" onchange="modselector(this)">
+             <option value="unknown"></option>
+             <option value="yes">Yes</option>
+             <option value="no">No</option>
+           </select><br><br>
+           <div id="unsurecoversheet(yes)" style="display:none">
+             <label>Please list relevant paragraphs of the mandatory cover sheet that you are unsure about:</label>
+             <input type="text" id="unknownassertionslist" onchange="modtext(this)" autoquote></input><br><br>
+             <input type="submit" value="Submit"><br><br>
+           </div>
+           <hr>
+         </section>
        </section>
 
-       <section id="mandatorycoversheet" style="display:none">
-         <label>Did you get the mandatory cover sheet from your landlord?</label>
-         <select id="receivedcoversheet" onchange="modselector(this)">
-           <option value="unknown"></option>
-           <option value="yes">Yes</option>
-           <option value="no">No</option>
-         </select><br><br>
-       </section>
+
 
 
 <!--    end of sections 1+2    -->
@@ -142,9 +173,17 @@
 
 <!--    SECTION 3   -->
       <section id="3asubsection">
-        <div id="3ayesno">
-          <label>3a. Did you tell your landlord about anything that makes your home uninhabitable?</label>
-            <select id="informedlandlord" onchange="modselector(this)">
+        </div  id="isitrent">
+        <h4>3a. Are you being evicted because you failed to pay rent?</h4>
+          <select id="nonpayment" onchange='modselector(this)'>
+            <option value="unknown"></option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select><br><br>
+        </div>
+        </div  id="3ayesno" style='display:none'>
+          <h4> Did you tell your landlord about anything that makes your home uninhabitable?</h4>
+            <select id="informedlandlord" onchange='modselector(this)'>
               <option value="unknown"></option>
               <option value="1">Yes</option>
               <option value="0">No</option>
@@ -152,58 +191,60 @@
         </div>
         <div id="3achoose" style='display:none'>
           <!-- If yes, then answer the following -->
-          <input type="checkbox" id="leakyceiling" name="leakyceiling" value="yes">
+          <input type="checkbox" id="leakyceiling" name="3aknown" value="1">
           <label for="leakyceiling"> Leaking ceiling or walls</label><br>
-          <input type="checkbox" id="badsmokedetector" name="badsmokedetector" value="yes">
+          <input type="checkbox" id="badsmokedetector" name="3aknown" value="1">
           <label for="badsmokedetector">Missing/broken smoke detector</label><br>
-          <input type="checkbox" id="badplasterorpaint" name="badplasterorpaint" value="yes">
+          <input type="checkbox" id="badplasterorpaint" name="3aknown" value="1">
           <label for="badplasterorpaint">Falling plaster/peeling paint</label><br>
-          <input type="checkbox" id="infestation" name="infestation" value="yes">
+          <input type="checkbox" id="infestation" name="3aknown" value="1">
           <label for="infestation">Infestation of roaches/rodents/insect/vermin</label><br>
-          <input type="checkbox" id="badheat" name="badheat" value="yes">
+          <input type="checkbox" id="badheat" name="3aknown" value="1">
           <label for="badheat">Lack of/Inadequate heat
           </label><br>
-          <input type="checkbox" id="uncleancommonarea" name="uncleancommonarea" value="yes">
+          <input type="checkbox" id="uncleancommonarea" name="3aknown" value="1">
           <label for="uncleancommonarea">Common areas unclean
           </label><br>
-          <input type="checkbox" id="nohotwater" name="nohotwater" value="yes">
+          <input type="checkbox" id="nohotwater" name="3aknown" value="1">
           <label for="nohotwater">Lack of/Inadequate hot water
           </label><br>
-          <input type="checkbox" id="notrashcollection" name="notrashcollection" value="yes">
+          <input type="checkbox" id="notrashcollection" name="3aknown" value="1">
           <label for="notrashcollection">Inadequate trash receptacles/collection
           </label><br>
-          <input type="checkbox" id="nogas" name="nogas" value="yes">
+          <input type="checkbox" id="nogas" name="3aknown" value="1">
           <label for="nogas">Defective/Inadequate gas services
           </label><br>
-          <input type="checkbox" id="unsafestairway" name="unsafestairway" value="yes">
+          <input type="checkbox" id="unsafestairway" name="3aknown" value="1">
           <label for="unsafestairway">Unsafe stairways/railings
           </label><br>
-          <input type="checkbox" id="badwindowordoor" name="badwindowordoor" value="yes">
+          <input type="checkbox" id="badwindowordoor" name="3aknown" value="1">
           <label for="badwindowordoor">Missing/broken windows or doors</label><br>
-          <input type="checkbox" id="nosecuritylocks" name="nosecuritylocks" value="yes">
+          <input type="checkbox" id="nosecuritylocks" name="3aknown" value="1">
           <label for="nosecuritylocks">Inadequate security locks
           </label><br>
-          <input type="checkbox" id="badwindowscreen" name="badwindowscreen" value="yes">
+          <input type="checkbox" id="badwindowscreen" name="3aknown" value="1">
           <label for="badwindowscreen">Missing/torn window screens</label><br>
-          <input type="checkbox" id="badelectricalwiring" name="badelectricalwiring" value="yes">
+          <input type="checkbox" id="badelectricalwiring" name="3aknown" value="1">
           <label for="badelectricalwiring">Defective electrical wiring</label><br>
-          <input type="checkbox" id="holes" name="holes" value="yes">
+          <input type="checkbox" id="holes" name="3aknown" value="1">
           <label for="holes">Hole(s) in walls/floor/carpet</label><br>
-          <input type="checkbox" id="leadhazards" name="leadhazards" value="yes">
+          <input type="checkbox" id="leadhazards" name="3aknown" value="1">
           <label for="leadhazards">Lead Hazards
           </label><br>
-          <input type="checkbox" id="badplumbing" name="badplumbing" value="yes">
+          <input type="checkbox" id="badplumbing" name="3aknown" value="1">
           <label for="badplumbing">Defective/leaking plumbing
           </label><br>
-          <input type="checkbox" id="mold" name="mold" value="yes">
+          <input type="checkbox" id="mold" name="3aknown" value="1">
           <label for="mold">Mold
           </label><br>
-          <input type="checkbox" id="other" name="other" value="yes">
+          <input type="checkbox" id="other" name="3aother" value="1">
           <label for="other">Other:
             <input type="text" id="other" name="other">
           </label><br><br><hr>
         </div>
       </section>
+
+
       <div>
         <!-- question 3b -->
         <h4>Has someone from a government agency ordered your landlord to repair a condition in the home?</h4>
@@ -289,15 +330,58 @@
       style(generaldenial(A), display, "") :- claimisgreaterthan1000(A)
       style(generaldenial(A), display, none) :- ~claimisgreaterthan1000(A)
 
-      %%% GENERAL DENIAL NEED TO FIX THIS%%%
+      %%% GENERAL DENIAL%%%
+      value(generaldenial,A) :- generaldenial(A)
+      value(notgeneraldenial,A) :- notgeneraldenial(A)
+      click(notgeneraldenial) :: notgeneraldenial(0) ==> ~notgeneraldenial(0)
+      click(notgeneraldenial) :: generaldenial(1) ==> ~generaldenial(1) & generaldenial(0)
+      click(notgeneraldenial) :: notgeneraldenial(1)
+      click(generaldenial) :: generaldenial(0) ==> ~generaldenial(0)
+      click(generaldenial) ::generaldenial(1)
+      click(generaldenial) :: notgeneraldenial(1) ==> ~notgeneraldenial(1) & notgeneraldenial(0)
       style(generaldenial(no), display, "") :- notgeneraldenial(1)
       style(generaldenial(no), display, none) :- notgeneraldenial(0)
-      click(notgeneraldenial) :: notgeneraldenial(0) ==> ~notgeneraldenial(0) & notgeneraldenial(1)
-      click(generaldenial) :: generaldenial(0) ==> ~generaldenial(0) & generaldenial(1)
 
       %%% SPECIFIC DENIALS %%%
+      value(specificdenials, A) :- specificdenials(A)
+      select(specificdenials, A) :: specificdenials(A)
+      select(specificdenials, A) :: specificdenials(B) ==> ~specificdenials(B)
+      style(specificdenials(A), display, "") :- specificdenials(A)
+      style(specificdenials(A), display, none) :- ~specificdenials(A)
+
+      value(disagreewithassertions, A) :- disagreewithassertions(A)
+      select(disagreewithassertions, A) :: disagreewithassertions(A)
+      select(disagreewithassertions, A) :: disagreewithassertions(B) ==> ~disagreewithassertions(B)
+      style(disagreewithassertions(A), display, "") :- disagreewithassertions(A)
+      style(disagreewithassertions(A), display, none) :- ~disagreewithassertions(A)
+
+      value(unsureassertions, A) :- unsureassertions(A)
+      select(unsureassertions, A) :: unsureassertions(A)
+      select(unsureassertions, A) :: unsureassertions(B) ==> ~unsureassertions(B)
+      style(unsureassertions(A), display, "") :- unsureassertions(A)
+      style(unsureassertions(A), display, none) :- ~unsureassertions(A)
+
+        %%% MANDATORY COVER SHEET %%%
+      value(receivedcoversheet, A) :- receivedcoversheet(A)
+      select(receivedcoversheet, A) :: receivedcoversheet(A)
+      select(receivedcoversheet, A) :: receivedcoversheet(B) ==> ~receivedcoversheet(B)
+      style(mandatorycoversheet(yes), display, "") :- receivedcoversheet(yes)
+      style(mandatorycoversheet(yes), display, none) :- ~receivedcoversheet(yes)
+
+      value(falsecoversheet, A) :- falsecoversheet(A)
+      select(falsecoversheet, A) :: falsecoversheet(A)
+      select(falsecoversheet, A) :: falsecoversheet(B) ==> ~falsecoversheet(B)
+      style(falsecoversheet(yes), display, "") :- falsecoversheet(yes)
+      style(falsecoversheet(yes), display, none) :- ~falsecoversheet(yes)
+
+      value(unsurecoversheet, A) :- unsurecoversheet(A)
+      select(unsurecoversheet, A) :: unsurecoversheet(A)
+      select(unsurecoversheet, A) :: unsurecoversheet(B) ==> ~unsurecoversheet(B)
+      style(unsurecoversheet(yes), display, "") :- unsurecoversheet(yes)
+      style(unsurecoversheet(yes), display, none) :- ~unsurecoversheet(yes)
 
       %%% 3A. WAS THE LANDLORD INFORMED OF AN UNINHABITABLE CONDITION %%%
+      value(informedlandlord, A) :- informedlandlord(A)
       style(3achoose, display, "") :-informedlandlord(1)
       style(3achoose, display, none) :-informedlandlord(0)
       select(informedlandlord, A) :: informedlandlord(A)
@@ -307,6 +391,26 @@
 
       %%% QUESTION 3A -- BREACH OF WARRANT OF HABITABILITY %%%
 
+      style(3ayesno, display, "") :- nonpayment(1)
+      style(3ayesno, display, none) :- nonpayment(0)
+
+      style(3achoose, display, "") :- informedlandlord(1)
+      style(3achoose, display, none) :- informedlandlord(0)
+      select(informedlandlord, A) :: informedlandlord(A)
+      select(informedlandlord, A) :: informedlandlord(A) ==> ~informedlandlord(B)
+
+      select(nonpayment, A) :: nonpayment(A)
+      select(nonpayment, A) :: nonpayment(A) ==> ~nonpayment(B)
+
+      select(3aknown , 1) :: 3aknown(1)
+      deselect(3aknown, 1) :: 3aknown(0)
+      select(3aother, 1) :: 3aother(1)
+      deselect(3aother, 1) :: 3aother(0)
+
+      3aselected(1) :- 3aother(1) & nonpayment(1)
+      3aselected(1) :- 3aknown(1) & nonpayment(1)
+
+      3a(1) :- 3aselected(1) & informedlandlord(1)
 
 
     </textarea>
