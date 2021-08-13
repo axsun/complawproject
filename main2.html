@@ -22,7 +22,8 @@
         <hr>
       </section>
 
-<!--  Attorney -->
+ <!-- ------Attorney------ -->
+
       <section id="attorney(yes)" style='display:none'>
         <h4>Yes, I am an attorney</h4>
 <!--           <form action = "/action_page.php" method = "get"> -->
@@ -128,6 +129,7 @@
            <input type="submit" value="Submit"><br><br>
          </section>
          <hr>
+
 
          <section id="mandatorycoversheet">
            <label>Did you get the mandatory cover sheet from your landlord?</label>
@@ -246,21 +248,27 @@
       <div>
         <!-- question 3b -->
         <h4>Has someone from a government agency ordered your landlord to repair a condition in the home?</h4>
-        <label for="GovernmentOrderedRepair">
-          <input id="GovernmentOrderedRepair" value="yes" type="radio" name="GovernmentOrderedRepair-YesNo">Yes
-        </label>
-        <label for="NotGovernmentOrderedRepair">
-          <input id="NotGovernmentOrderedRepair" value="no" type="radio" name="GovernmentOrderedRepair-YesNo">No
-        </label><br><br>
+        <select id="govrepair" onchange='modselector(this)'>
+          <option value="unknown"></option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select><br><br>
         <!--If yes-->
-        <h4>Did over 60 days pass after the notice from the government agency without the ordered repair being made?</h4>
-        <label for="60dayminimum">
-          <input id="60dayminimum" value="yes" type="radio" name="60dayminimum-YesNo">Yes
-        </label>
-        <label for="not60dayminimum">
-          <input id="not60dayminimum" value="no" type="radio" name="60dayminimum-YesNo">No
-        </label><br><br>
-
+      <div id="govrepairdetails" style='display:none'>
+          <h4>Did over 60 days pass after the notice from the government agency without the ordered repair being made?</h4>
+          <label for="60dayminimum">
+            <input id="60dayminimum" value="yes" type="radio" name="60dayminimum-YesNo">Yes
+          </label>
+          <label for="not60dayminimum">
+            <input id="not60dayminimum" value="no" type="radio" name="60dayminimum-YesNo">No
+          </label><br><br>
+          <p id="adddocuments"></p>
+          <form id="upload1" action="upload.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" size="50" /> 
+            <br />    
+            <input type="submit" value="Upload" />    
+            </form>
+        </div>
         <h4>Did Plaintiff increase, demand or collect rent when uninhabitable conditions exist(ed) and have not been repaired/abated within 35 days after written notice from a public officer or employee to repair or abate them?</h4>
         <label for="IllegalRentCollection">
           <input id="IllegalRentCollection" value="yes" type="radio" name="IllegalRentCollection-YesNo">Yes
@@ -436,7 +444,13 @@
 
       3a(1) :- 3aselected(1) & informedlandlord(1)
 
-      %%% QUESTION 3B -- REPAIR AND DEDUCT %%%
+      value(govrepair, A) :- govrepair(A)
+      select(govrepair, A) :: govrepair(A)
+      select(govrepair, A) :: govrepair(B) ==> ~govrepair(B)
+      
+      innerhtml(adddocuments, "Please attach any documents or supplementary materials to verify.") :- govrepair(1)
+      style(govrepairdetails, display, "") :- govrepair(1)
+            %%% QUESTION 3B -- REPAIR AND DEDUCT %%%
 
 
       
