@@ -22,8 +22,7 @@
         <hr>
       </section>
 
- <!-- ------Attorney------ -->
-
+<!--  Attorney -->
       <section id="attorney(yes)" style='display:none'>
         <h4>Yes, I am an attorney</h4>
 <!--           <form action = "/action_page.php" method = "get"> -->
@@ -129,7 +128,6 @@
            <input type="submit" value="Submit"><br><br>
          </section>
          <hr>
-
 
          <section id="mandatorycoversheet">
            <label>Did you get the mandatory cover sheet from your landlord?</label>
@@ -256,58 +254,72 @@
         <!--If yes-->
       <div id="govrepairdetails" style='display:none'>
           <h4>Did over 60 days pass after the notice from the government agency without the ordered repair being made?</h4>
-          <label for="60dayminimum">
-            <input id="60dayminimum" value="yes" type="radio" name="60dayminimum-YesNo">Yes
-          </label>
-          <label for="not60dayminimum">
-            <input id="not60dayminimum" value="no" type="radio" name="60dayminimum-YesNo">No
-          </label><br><br>
-          <p id="adddocuments"></p>
+          <select id="60days" onchange='modselector(this)'>
+            <option value="unknown"></option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select><br><br>
+          
+          <p id="adddocuments" style="color:darkred"></p>
           <form id="upload1" action="upload.php" method="post" enctype="multipart/form-data">
             <input type="file" name="file" size="50" /> 
             <br />    
             <input type="submit" value="Upload" />    
             </form>
         </div>
-        <h4>Did Plaintiff increase, demand or collect rent when uninhabitable conditions exist(ed) and have not been repaired/abated within 35 days after written notice from a public officer or employee to repair or abate them?</h4>
-        <label for="IllegalRentCollection">
-          <input id="IllegalRentCollection" value="yes" type="radio" name="IllegalRentCollection-YesNo">Yes
-        </label>
-        <label for="NotIllegalRentCollection">
-          <input id="NotIllegalRentCollection" value="no" type="radio" name="IllegalRentCollection-YesNo">No
-        </label><br><br>
+        <h4>Did Plaintiff increase, demand or collect rent when uninhabitable conditions exist(ed) and have not been fixed within 35 days after written notice from a public officer or employee to abate?</h4>
+        <select id="rentwhileuninhabitable" onchange='modselector(this)'>
+          <option value="unknown"></option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select><br><br>
+        <p id="notice1" style="color:darkred"></p>
+        <form id="upload2" action="upload.php" method="post" enctype="multipart/form-data" style='display:none'>
+          <input type="file" name="file" size="50" /> 
+          <br />    
+          <input type="submit" value="Upload" />    
+          </form>
+      </div>
 
-
-        <h4>This dwelling/unit has serious health, safety, fire or building  violations with a written notice from a governmental agency to fix the situation</h4>
+        <!--
+          CONSIDER ANSWERING THIS QUESTION FOR THEM USING THE INFO YOU ALREADY HAVE
+          
+          <h4>Does the property have serious health, safety, fire or building code violations with a written notice from a governmental agency to fix the situation?</h4>
         <label for="ViolationCitation">
           <input id="ViolationCitation" value="yes" type="radio" name="ViolationCitation-YesNo">Yes
         </label>
         <label for="NotViolationCitation">
           <input id="NotViolationCitation" value="no" type="radio" name="ViolationCitation-YesNo">No
         </label><br><br>
-        <!--If yes-->
+      
         <h4>Did over 6 months pass after the notice from the government agency without the violation being fixed?</h4>
         <label for="60dmonthminimum">
           <input id="60dmonthminimum" value="yes" type="radio" name="60dmonthminimum-YesNo">Yes
         </label>
         <label for="not60dmonthminimum">
           <input id="not60dmonthminimum" value="no" type="radio" name="60dmonthminimum-YesNo">No
-        </label><br><br>
+        </label><br><br> -->
 
+        <h4>Did you make essential repairs to the property for which you recieved no credit?</h4>
+        <select id="repairnodeduct" onchange='modselector(this)'>
+          <option value="unknown"></option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select><br><br>
 
-        <h4>Did you and your landlord agree verbally or in writing that you could repair the conditions in the unit and deduct the cost of repairs from the rent?</h4>
-        <label for="agreementtodeduct">
-          <input id="agreementtodeduct" value="yes" type="radio" name="agreementtodeduct-YesNo">Yes
-        </label>
-        <label for="agreementtodeduct">
-          <input id="agreementtodeduct" value="no" type="radio" name="agreementtodeduct-YesNo">No
-        </label><br><br>
         <h4>Did you pay a utility bill that your landlord is supposed to pay for and so you deducted it from the rent?</h4>
         <label for="deductutility">
           <input id="deductutility" value="yes" type="radio" name="deductutility-YesNo">Yes
         </label>
         <label for="deductutility">
           <input id="deductutility" value="no" type="radio" name="deductutility-YesNo">No
+        </label><br><br>
+        <h4>Did you and your landlord agree verbally or in writing that you could repair the conditions in the unit and deduct the cost of repairs from the rent?</h4>
+        <label for="agreementtodeduct">
+          <input id="agreementtodeduct" value="yes" type="radio" name="agreementtodeduct-YesNo">Yes
+        </label>
+        <label for="agreementtodeduct">
+          <input id="agreementtodeduct" value="no" type="radio" name="agreementtodeduct-YesNo">No
         </label><br><br>
 
       </div>
@@ -423,14 +435,12 @@
       value(informedlandlord, A) :- informedlandlord(A)
       select(informedlandlord, A) :: informedlandlord(A)
       select(informedlandlord, A) :: informedlandlord(B) ==> ~informedlandlord(B)
-
       style(uninhabitablestuff, display, "") :- informedlandlord(1)
       style(uninhabitablestuff, display, none) :- informedlandlord(0)
 
       value(nonpayment, A) :- nonpayment(A)
       select(nonpayment, A) :: nonpayment(A)
       select(nonpayment, A) :: nonpayment(B) ==> ~nonpayment(B)
-
       style(3ab, display, "") :- nonpayment(1)
       style(3ab, display, none) :- ~nonpayment(1)
 
@@ -441,19 +451,40 @@
 
       3aselected(1) :- 3aother(1) & nonpayment(1)
       3aselected(1) :- 3aknown(1) & nonpayment(1)
-
       3a(1) :- 3aselected(1) & informedlandlord(1)
+
+
+      style(govrepairdetails, display, "") :- govrepair(1)
+            %%% QUESTION 3B -- REPAIR AND DEDUCT %%%
 
       value(govrepair, A) :- govrepair(A)
       select(govrepair, A) :: govrepair(A)
       select(govrepair, A) :: govrepair(B) ==> ~govrepair(B)
-      
       innerhtml(adddocuments, "Please attach any documents or supplementary materials to verify.") :- govrepair(1)
+      innerhtml(adddocuments, "") :- govrepair(0)
       style(govrepairdetails, display, "") :- govrepair(1)
-            %%% QUESTION 3B -- REPAIR AND DEDUCT %%%
+      style(govrepairdetails, display, none) :- govrepair(0)
+
+      value(60days, A) :- 60days(A)
+      select(60days, A) :: 60days(A)
+      select(60days, A) :: 60days(B) ==> ~60days(B)
+      innerhtml(adddocuments, "This creates the presumption that your landlord has breached the warranty of habitability. Please attach any documents or supplementary materials to verify.") :- 60days(1)
+      innerhtml(adddocuments, "Please attach any documents or supplementary materials to verify.") :- 60days(0)
 
 
-      
+      value(rentwhileuninhabitable, A) :- rentwhileuninhabitable(A)
+      select(rentwhileuninhabitable, A) :: rentwhileuninhabitable(A)
+      select(rentwhileuninhabitable, A) :: rentwhileuninhabitable(B) ==> ~rentwhileuninhabitable(B)
+      innerhtml(notice1, "It is illegal for your landlord to demand, increase or collect rent. Please Provide documents to verify.") :- rentwhileuninhabitable(1)
+      innerhtml(notice1, "") :- rentwhileuninhabitable(0)
+
+      style(upload2, display, "") :- rentwhileuninhabitable(1)
+      style(upload2, display, none) :- rentwhileuninhabitable(0)
+
+
+      value(repairnodeduct, A) :- repairnodeduct(A)
+      select(repairnodeduct, A) :: repairnodeduct(A)
+      select(repairnodeduct, A) :: repairnodeduct(B) ==> ~repairnodeduct(B)
 
 
     </textarea>
