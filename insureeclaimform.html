@@ -1,0 +1,1274 @@
+
+<!-- saved from url=(0070)http://logicprogramming.stanford.edu/assignments/schedule/starter.html -->
+<html><!--=======================================================================--><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <script type="text/javascript" src="./starter_files/epilog.js"></script>
+    <script type="text/javascript" src="./starter_files/worksheets.js"></script>
+  </head>
+
+<!--=======================================================================-->
+
+<body onload="initialize()">
+  <center>
+
+<!--=======================================================================-->
+
+<div style="
+width: 800px;
+height: 250px;
+border: 2px solid rebeccapurple;
+border-radius: 5px;
+background-color: #e6f3f8;
+border-color: #2e5984;
+">
+    <h1>Claim Form</h1>
+    <div>
+        <h2>Policyholder Information</h2>
+
+        <div>
+            <label>Date of plan enrollment:</label>
+            <select id="planbeginmonth" onchange="modselector(this)">
+              <option value="unknown"></option>
+              <option value="1">1 - January</option>
+              <option value="2">2 - February</option>
+              <option value="3">3 - March</option>
+              <option value="4">4 - April</option>
+              <option value="5">5 - May</option>
+              <option value="6">6 - June</option>
+              <option value="7">7 - July</option>
+              <option value="8">8 - August</option>
+              <option value="9">9 - September</option>
+              <option value="10">10 - October</option>
+              <option value="11">11 - November</option>
+              <option value="12">12 - December</option>
+            </select>
+            <label>/</label>
+            <input type="number" id="planbeginday" min="1" max="31" onchange="modtext(this)" autoquote>
+            <label>/</label>
+            <input type="number" id="planbeginyear" min="1900" max="2025" onchange="modtext(this)" autoquote>
+        </div>
+
+        <div>
+            <label for="mainname">Please write main policyholder full name (First Middle Last):</label>
+            <input type="text" required id="mainname"/>
+        </div>
+
+        <div>
+            <label for="mainid">ID No.</label>
+            <input type="number" id="mainid"/>
+
+            <label for="mainbirthday">Date of Birth:</label>
+            <select id="mainmonth" onchange="modselector(this)">
+              <option value="unknown"></option>
+              <option value="1">1 - January</option>
+              <option value="2">2 - February</option>
+              <option value="3">3 - March</option>
+              <option value="4">4 - April</option>
+              <option value="5">5 - May</option>
+              <option value="6">6 - June</option>
+              <option value="7">7 - July</option>
+              <option value="8">8 - August</option>
+              <option value="9">9 - September</option>
+              <option value="10">10 - October</option>
+              <option value="11">11 - November</option>
+              <option value="12">12 - December</option>
+            </select>
+            <label>/</label>
+            <input type="number" id="mainday" min="1" max="31" onchange="modtext(this)" autoquote>
+            <label>/</label>
+            <input type="number" id="mainyear" min="1900" max="2025" onchange="modtext(this)" autoquote>
+
+            <label for="maingender">Gender:</label>
+            <select id="maingender" onchange="modselector(this)">
+                <option value="unknown"></option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+
+        </div>
+
+        <div>
+            <label for="mainaddress">Street Address:</label>
+            <input type="text" id="mainaddress"/>
+
+            <label for="maincity">City:</label>
+            <input type="text" id="maincity"/>
+
+            <label for="maincountry">Country:</label>
+            <input type="text" id="maincountry"/>
+
+            <label for="mainzip">Zip Code:</label>
+            <input type="text" id="mainzip"/>
+        </div>
+
+        <div>
+
+        </div>
+    </div>
+
+
+    <div>
+        <h2>Claimant Information</h2>
+
+        <label for="aresame">Is the claimant main policyholder?</label>
+        <button id="issameperson" onclick="modbutton(this)">Yes</button>
+        <button id="isnotsameperson" onclick="modbutton(this)">No</button>
+
+        <div id="separateinfo" style="visibility:hidden">
+
+            <div>
+                <label for="claimantname">Please write your full name (First Middle Last):</label>
+                <input type="text" required id="claimantname"/>
+            </div>
+
+            <div>
+                <label for="claimantid">ID No.</label>
+                <input type="number" id="claimantid"/>
+
+                <label for="claimantrelation">Relationship to Main Policyholder:</label>
+                <select id="claimantrelation">
+                <option style="display:none"/>
+                <option value="child">Child </option>
+                <option value="partner">Partner </option>
+                </select>
+            </div>
+
+            <div>
+                <label>Date of Birth:</label>
+                <select id="claimantmonth" onchange="modselector(this)">
+                  <option value="unknown"></option>
+                  <option value="1">1 - January</option>
+                  <option value="2">2 - February</option>
+                  <option value="3">3 - March</option>
+                  <option value="4">4 - April</option>
+                  <option value="5">5 - May</option>
+                  <option value="6">6 - June</option>
+                  <option value="7">7 - July</option>
+                  <option value="8">8 - August</option>
+                  <option value="9">9 - September</option>
+                  <option value="10">10 - October</option>
+                  <option value="11">11 - November</option>
+                  <option value="12">12 - December</option>
+                </select>
+                <label>/</label>
+                <input type="number" id="claimantday" min="1" max="31" onchange="modtext(this)" autoquote>
+                <label>/</label>
+                <input type="number" id="claimantyear" min="1900" max="2025" onchange="modtext(this)" autoquote>
+
+                <label for="claimantgender">Gender:</label>
+                <select id="claimantgender">
+                    <option style="display:none"/>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h2>Payment Detail</h2>
+
+        <div>
+            <label>How would you like to receive payment?</label>
+            <select id="paymentmethod" onchange="modselector(this)">
+                <option value="unknown"></option>
+                <option value="wire">Electronic Funds Transfer</option>
+                <option value="check">Check Payment</option>
+            </select>
+
+            <div id="paymentmethod(wire)" style="visibility:hidden">
+                <label for="payeename">Payee Name:</label>
+                <input type="text" id="payeename"/>
+                <label for="bankname">Bank Name:</label>
+                <input type="text" id="bankname"/>
+                <label for="routingno">Routing Number:</label>
+                <input type="text" id="routingno"/>
+                <label for="accountno">Account Number:</label>
+                <input type="text" id="accountno"/>
+            </div>
+
+            <div id="paymentmethod(check)" style="visibility:hidden">
+                <label for="payeename">Payee Name:</label>
+                <input type="text" id="payeename"/>
+            </div>
+            <p>In filling out this portion, I hereby authorize and request the insurer to pay benefit due in respect of this claim form as follows.</p>
+        </div>
+
+        <div>
+            <h2>Claim Detail</h2>
+
+            <div>
+
+                <label for="hospitalname">Name of Hospital:</label>
+                <input type="text" id="hospitalname" />
+
+                <label>Date Admitted:</label>
+                <select id="monthstart" onchange="modselector(this)">
+                  <option value="unknown"></option>
+                  <option value="1">1 - January</option>
+                  <option value="2">2 - February</option>
+                  <option value="3">3 - March</option>
+                  <option value="4">4 - April</option>
+                  <option value="5">5 - May</option>
+                  <option value="6">6 - June</option>
+                  <option value="7">7 - July</option>
+                  <option value="8">8 - August</option>
+                  <option value="9">9 - September</option>
+                  <option value="10">10 - October</option>
+                  <option value="11">11 - November</option>
+                  <option value="12">12 - December</option>
+                </select>
+                <label>/</label>
+                <input type="number" id="daystart" min="1" max="31" onchange="modtext(this)" autoquote>
+                <label>/</label>
+                <input type="number" id="yearstart" min="1900" max="2025" onchange="modtext(this)" autoquote>
+
+
+                <label for="leavedate">Date Discharged:</label>
+                <select id="monthend" onchange="modselector(this)">
+                    <option value="unknown"></option>
+                    <option value="1">1 - January</option>
+                    <option value="2">2 - February</option>
+                    <option value="3">3 - March</option>
+                    <option value="4">4 - April</option>
+                    <option value="5">5 - May</option>
+                    <option value="6">6 - June</option>
+                    <option value="7">7 - July</option>
+                    <option value="8">8 - August</option>
+                    <option value="9">9 - September</option>
+                    <option value="10">10 - October</option>
+                    <option value="11">11 - November</option>
+                    <option value="12">12 - December</option>
+                  </select>
+                  <label>/</label>
+                  <input type="number" id="dayend" min="1" max="31" onchange="modtext(this)" autoquote>
+                  <label>/</label>
+                  <input type="number" id="yearend" min="1900" max="2025" onchange="modtext(this)" autoquote>
+            </div>
+
+            <div>
+                <label>Is your claim being filed for an injury resulting from an accident or a chronic condition resulting from some illness or disease?</label>
+                <select id="claimtype" onchange="modselector(this)">
+                    <option value="unknown"></option>
+                    <option value="accident">Accident or injury</option>
+                    <option value="illness">Chronic illness</option>
+                </select>
+            </div>
+
+            <div id="claimtype(accident)" style="visibility:hidden">
+                <h3>Accident Information</h3>
+
+                <label for="accidentdate">Date of Accident:</label>
+                <select id="monthacc" onchange="modselector(this)">
+                    <option value="unknown"></option>
+                    <option value="1">1 - January</option>
+                    <option value="2">2 - February</option>
+                    <option value="3">3 - March</option>
+                    <option value="4">4 - April</option>
+                    <option value="5">5 - May</option>
+                    <option value="6">6 - June</option>
+                    <option value="7">7 - July</option>
+                    <option value="8">8 - August</option>
+                    <option value="9">9 - September</option>
+                    <option value="10">10 - October</option>
+                    <option value="11">11 - November</option>
+                    <option value="12">12 - December</option>
+                  </select>
+                  <label>/</label>
+                  <input type="number" id="dayacc" min="1" max="31" onchange="modtext(this)" autoquote>
+                  <label>/</label>
+                  <input type="number" id="yearacc" min="1900" max="2025" onchange="modtext(this)" autoquote>
+
+                  <label for="accodenttime">Time of Accident:</label>
+                  <input type="time" id="accidenttime"
+                  min="01:00" max="12:59">
+
+                <div>
+                  <label>Did the accident and/or resulting hospitalization occur in a foreign country?</label>
+                  <select id="foreign">
+                    <option value="unknown"></option>
+                    <option value="yesforeign">Yes</option>
+                    <option value="noforeign">No</option>
+                  </select>
+
+
+                  <label for="accidentloc">Country of accident:</label>
+                  <input type="text" id="accidentloc" />
+                </div>
+
+                <div>
+                    <label>Please list all witnesses and responders to the accident:</label>
+
+                    <button id="addwitness" onclick=modbutton(this)>Enter additional witness</button>
+
+                    <div id="witness(1)">
+                          <label for="witness1name">Witness Name:</label>
+                          <input type="text" id="witness1name">
+
+                          <label for="witness1address">Witness Address:</label>
+                          <input type="text" id="witness1address"/>
+
+                          <label for="witness1id">ID No.:</label>
+                          <input type="text" id="witness1id"/>
+
+                          <label for="witness1cell">Witness Mobile Phone:</label>
+                          <input type="text" id="witness1cell"/>
+
+                          <label for="witness1relation">Relationship to the insured:</label>
+                          <input type="text" id="witness1relation" />
+                    </div>
+
+                    <div id="witness(2)" style="visibility:hidden">
+                        <label for="witness2name">Witness Name:</label>
+                        <input type="text" id="witness2name">
+
+                        <label for="witness2address">Witness Address:</label>
+                        <input type="text" id="witness2address"/>
+
+                        <label for="witness2id">ID No.:</label>
+                        <input type="text" id="witness2id"/>
+
+                        <label for="witness2cell">Witness Mobile Phone:</label>
+                        <input type="text" id="witness2cell"/>
+
+                        <label for="witness2relation">Relationship to the insured:</label>
+                        <input type="text" id="witness2relation" />
+                  </div>
+
+                <div id="witness(3)" style="visibility:hidden">
+                    <label for="witness3name">Witness Name:</label>
+                    <input type="text" id="witness3name">
+
+                    <label for="witness3address">Witness Address:</label>
+                    <input type="text" id="witness3address"/>
+
+                    <label for="witness3id">ID No.:</label>
+                    <input type="text" id="witness3id"/>
+
+                    <label for="witness3cell">Witness Mobile Phone:</label>
+                    <input type="text" id="witness3cell"/>
+
+                    <label for="witness3relation">Relationship to the insured:</label>
+                    <input type="text" id="witness3relation" />
+              </div>
+
+            <div id="witness(4)" style="visibility:hidden">
+                <label for="witness4name">Witness Name:</label>
+                <input type="text" id="witness4name">
+
+                <label for="witness4address">Witness Address:</label>
+                <input type="text" id="witness4address"/>
+
+                <label for="witness4id">ID No.:</label>
+                <input type="text" id="witness4id"/>
+
+                <label for="witness4cell">Witness Mobile Phone:</label>
+                <input type="text" id="witness4cell"/>
+
+                <label for="witness4relation">Relationship to the insured:</label>
+                <input type="text" id="witness4relation" />
+            </div>
+
+            <div>
+                <label>Was the insured under the influence of alcohol, medication, drugs, or any other intoxicating substance at the time of the accident?</label>
+                <select id="substancestatus" onchange="modselector(this)">
+                    <option value="unknown"></option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+                <div id="substancestatus(1)" style="visibility:hidden">
+
+                    <button id="addsubstance" onclick=modbutton(this)>Enter additional substance</button>
+
+                    <div id="substance(1)" style="visibility:hidden">
+                        <label for="subst1name">Name of substance:</label>
+                        <input type="text" id="subst1name">
+
+                        <label for="substancetype(1)">Type of substance:</label>
+                        <select id="substancetype(1)" onchange="modselector(this)">
+                            <option value="unknown"></option>
+                            <option value="alcohol">Alcohol</option>
+                            <option value="prescription">Drug - Prescription</option>
+                            <option value="drugbad">Drug - Other</option>
+                        </select>
+
+
+                        <label>Date of consumption:</label>
+                        <select id="subst1month" onchange="modselector(this)">
+                            <option value="unknown"></option>
+                            <option value="1">1 - January</option>
+                            <option value="2">2 - February</option>
+                            <option value="3">3 - March</option>
+                            <option value="4">4 - April</option>
+                            <option value="5">5 - May</option>
+                            <option value="6">6 - June</option>
+                            <option value="7">7 - July</option>
+                            <option value="8">8 - August</option>
+                            <option value="9">9 - September</option>
+                            <option value="10">10 - October</option>
+                            <option value="11">11 - November</option>
+                            <option value="12">12 - December</option>
+                          </select>
+                          <label>/</label>
+                          <input type="number" id="subst1day" min="1" max="31" onchange="modtext(this)" autoquote>
+                          <label>/</label>
+                          <input type="number" id="subst1year" min="1900" max="2025" onchange="modtext(this)" autoquote>
+
+                        <label for="subst1time">Time consumed:</label>
+                        <input type="time" id="subst1time"/>
+
+                        <label for="subst1quant">Quantity consumed:</label>
+                        <input type="text" id="subst1quant"/>
+                    </div>
+
+                    <div id="substance(2)" style="visibility:hidden">
+                        <label for="subst2name">Name of substance:</label>
+                        <input type="text" id="subst2name">
+
+                        <label for="substancetype(2)">Type of substance:</label>
+                        <select id="substancetype(2)">
+                            <option value="unknown"></option>
+                            <option value="alcohol">Alcohol</option>
+                            <option value="prescription">Drug - Prescription</option>
+                            <option value="drugbad">Drug - Other</option>
+                        </select>
+
+
+                        <label>Date of consumption:</label>
+                        <select id="subst2month" onchange="modselector(this)">
+                            <option value="unknown"></option>
+                            <option value="1">1 - January</option>
+                            <option value="2">2 - February</option>
+                            <option value="3">3 - March</option>
+                            <option value="4">4 - April</option>
+                            <option value="5">5 - May</option>
+                            <option value="6">6 - June</option>
+                            <option value="7">7 - July</option>
+                            <option value="8">8 - August</option>
+                            <option value="9">9 - September</option>
+                            <option value="10">10 - October</option>
+                            <option value="11">11 - November</option>
+                            <option value="12">12 - December</option>
+                          </select>
+                          <label>/</label>
+                          <input type="number" id="subst2day" min="1" max="31" onchange="modtext(this)" autoquote>
+                          <label>/</label>
+                          <input type="number" id="subst2year" min="1900" max="2025" onchange="modtext(this)" autoquote>
+
+                        <label for="subst2time">Time consumed:</label>
+                        <input type="time" id="subst2time"/>
+
+                        <label for="subst2quant">Quantity consumed:</label>
+                        <input type="text" id="subst2quant"/>
+                    </div>
+
+                    <div id="substance(3)" style="visibility:hidden">
+                        <label for="subst3name">Name of substance:</label>
+                        <input type="text" id="subst3name">
+
+                        <label for="substancetype(3)">Type of substance:</label>
+                        <select id="substancetype(3)">
+                            <option value="unknown"></option>
+                            <option value="alcohol">Alcohol</option>
+                            <option value="prescription">Drug - Prescription</option>
+                            <option value="drugbad">Drug - Other</option>
+                        </select>
+
+
+                        <label>Date of consumption:</label>
+                        <select id="subst3month" onchange="modselector(this)">
+                            <option value="unknown"></option>
+                            <option value="1">1 - January</option>
+                            <option value="2">2 - February</option>
+                            <option value="3">3 - March</option>
+                            <option value="4">4 - April</option>
+                            <option value="5">5 - May</option>
+                            <option value="6">6 - June</option>
+                            <option value="7">7 - July</option>
+                            <option value="8">8 - August</option>
+                            <option value="9">9 - September</option>
+                            <option value="10">10 - October</option>
+                            <option value="11">11 - November</option>
+                            <option value="12">12 - December</option>
+                          </select>
+                          <label>/</label>
+                          <input type="number" id="subst3day" min="1" max="31" onchange="modtext(this)" autoquote>
+                          <label>/</label>
+                          <input type="number" id="subst3year" min="1900" max="2025" onchange="modtext(this)" autoquote>
+
+                        <label for="subst3time">Time consumed:</label>
+                        <input type="time" id="subst3time"/>
+
+                        <label for="subst3quant">Quantity consumed:</label>
+                        <input type="text" id="subst3quant"/>
+                    </div>
+
+
+                </div>
+
+                <div>
+                    <label for="accidentstatement">Chronology and description of accident:</label>
+                    <input type="text" id="accidentstatement"/>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+            <div id="claimtype(illness)" style="visibility:hidden">
+                <h3>Illness Information</h3>
+
+                <label>Please describe symptoms suffered:</label>
+                <input type="text" id="illnessdesc"/>
+
+                <label>Please provide the date of symptoms first noticed:</label>
+                <select id="monthfirstsym" onchange="modselector(this)">
+                    <option value="unknown"></option>
+                    <option value="1">1 - January</option>
+                    <option value="2">2 - February</option>
+                    <option value="3">3 - March</option>
+                    <option value="4">4 - April</option>
+                    <option value="5">5 - May</option>
+                    <option value="6">6 - June</option>
+                    <option value="7">7 - July</option>
+                    <option value="8">8 - August</option>
+                    <option value="9">9 - September</option>
+                    <option value="10">10 - October</option>
+                    <option value="11">11 - November</option>
+                    <option value="12">12 - December</option>
+                  </select>
+                  <label>/</label>
+                  <input type="number" id="dayfirstsym" min="1" max="31" onchange="modtext(this)" autoquote>
+                  <label>/</label>
+                  <input type="number" id="yearfirstsym" min="1900" max="2025" onchange="modtext(this)" autoquote>
+
+                <label>Please provide the date of initial consultation with a doctor:</label>
+                <select id="monthill" onchange="modselector(this)">
+                    <option value="unknown"></option>
+                    <option value="1">1 - January</option>
+                    <option value="2">2 - February</option>
+                    <option value="3">3 - March</option>
+                    <option value="4">4 - April</option>
+                    <option value="5">5 - May</option>
+                    <option value="6">6 - June</option>
+                    <option value="7">7 - July</option>
+                    <option value="8">8 - August</option>
+                    <option value="9">9 - September</option>
+                    <option value="10">10 - October</option>
+                    <option value="11">11 - November</option>
+                    <option value="12">12 - December</option>
+                  </select>
+                  <label>/</label>
+                  <input type="number" id="dayill" min="1" max="31" onchange="modtext(this)" autoquote>
+                  <label>/</label>
+                  <input type="number" id="yearill" min="1900" max="2025" onchange="modtext(this)" autoquote>
+
+                  <div>
+                    <label>Have you ever seen a doctor for this condition in the past?</label>
+                    <select id="consultbefore">
+                        <option style="display:none"/>
+                        <option val="yesconsult">Yes</option>
+                        <option val="noconsult">No</option>
+                    </select>
+
+                    <label>Name of hospital</label> <!---as far is the logic is concerned i dont get why we need this-->
+                    <input type="text" id="firshosp"/>
+
+                    <label>Name of doctor</label>
+                    <input type="text" id="firstcaretaker"/>
+
+
+                  </div>
+            </div>
+
+            <div>
+                <label>Have you been hospitalized for this condition or injury before? If so, provide the date.</label>
+                <select id="monthpriorhosp" onchange="modselector(this)">
+                    <option value="unknown"></option>
+                    <option value="1">1 - January</option>
+                    <option value="2">2 - February</option>
+                    <option value="3">3 - March</option>
+                    <option value="4">4 - April</option>
+                    <option value="5">5 - May</option>
+                    <option value="6">6 - June</option>
+                    <option value="7">7 - July</option>
+                    <option value="8">8 - August</option>
+                    <option value="9">9 - September</option>
+                    <option value="10">10 - October</option>
+                    <option value="11">11 - November</option>
+                    <option value="12">12 - December</option>
+                  </select>
+                  <label>/</label>
+                  <input type="number" id="daypriorhosp" min="1" max="31" onchange="modtext(this)" autoquote>
+                  <label>/</label>
+                  <input type="number" id="yearpriorhosp" min="1900" max="2025" onchange="modtext(this)" autoquote>
+            </div>
+
+            <div>
+                <label>Was hospitalization deemed necessary due to the nature of injury or at the recomendation of a practicing physician?</label>
+                <select id="physicianref" onchange="modselector(this)">
+                    <option value="unknown"></option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+                <label for="physicianname">Name of primary caretaker:</label>
+                <input type="text"/>
+
+                <label for="physicianemail">Physician email:</label>
+                <input type="text"/>
+
+                <label for="physicianemail">Mailing address:</label>
+                <input type="text"/>
+            </div>
+
+
+    <div>
+        <h2>Additional Insurance Claims</h2>
+        <label>Does the insuree also possess a surgical plan?</label>
+        <select id="surgplan" onchange="modselector(this)">
+            <option value="unknown"></option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <label>Did you undergo surgery?</label>
+        <select id="surghapp" onchange="modselector(this)">
+            <option value="unknown"></option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+    </div>
+
+    <div>
+        <label>Was the insured admitted to an ICU?</label>
+        <select id="icu" onchange="modselector(this)">
+            <option value="unknown"></option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <label>Did the injury or illness occur overseas and/or subsequently require hospitalization overseas?</label>
+        <select id="hospoverseas" onchange="modselector(this)">
+            <option value="unknown"></option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <label>Did the insured suffer from a critical illness (will enumerate from part 3 definitions later)?</label>
+        <select id="critillness" onchange="modselector(this)">
+            <option value="unknown"></option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+    </div>
+
+    <div>
+        <h2>Additional Documents</h2>
+    </div>
+
+</div>
+
+<div>
+    <h2>Additional exception conditions to add to linked forms</h2>
+    <div>
+        <label>Is the Insured Person employed (Part-time or Full-time) or does the Insured Person volunteer as one of the following: law enforcement officer, fire service personnel, civil defense personnel, military personnel? </label> <!---(TODO: remove upon checking their profile and job, so we can just ask them if they got injured on the job)-->
+        <select id="prohibitedjob" onchange="modselector(this)">
+            <option value="unknown"></option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+    </div>
+    <div>
+    <label>Is the insured person's Full-time or Part-time occupation one of the following: dispatch rider (riding a motorcycle), bus driver, taxi driver, heavy vehicle driver? </label> <!---(TODO: remove upon checking their profile and job, so we can just ask them if they got injured on the job)-->
+        <select id="prohibitedtaxi" onchange="modselector(this)">
+            <option value="unknown"></option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+    </div>
+
+    <label>Was the injury or illness sustained while working at one of the jobs mentioned previously?</label>
+    <select id="injuryonjob" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+
+
+
+</div>
+
+<div>
+    <label>Was the Insured Person injured acting as one of the following during the injury: diver, cabin crew, pilot, off-shore worker, logger, dock worker?</label>
+    <select id="prohibitedseaorland" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<div>
+    <label>Was the Insured Person injured while engaging in or training for one of  the following: free-diving, scuba-diving, water-skiing, rock-climbing, mountaineering, potholing, parachuting, hang-gliding, winter sports, speed contest/racing (other than on foot), or any professional competition/sports?</label>
+    <select id="prohibitedxgames" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<div>
+    <label>Was the Insured person's injury (directly or indirectly) contributed to by a nuclear reaction, radiation, or radioactive contamination?</label>
+    <select id="prohibitednuclear" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<div>
+    <label>Was the Insured Person&apos;s injury (indirectly or directly) contributed to by any willful/intentional (sane or insane) acts of the Insured Person or Policy Holder, including suicide, self-inflicted injury, suicide pacts/agreements, or any attempted threat?</label>
+    <select id="prohibitedsuicide" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<div>
+    <label>Was the Insured Person&apos;s injury (indirectly or directly) contributed by his/her driving of any kind of vehicle while the alcohol content of his/her blood exceeded the level permitted by the law?</label>
+    <select id="prohibiteddui" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<div>
+    <label>Was the Insured Person&apos;s injury (directly or indirectly) contributed to by his/her taking of a drug?</label>
+    <select id="exceptionsdrug" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<div>
+    <label>Was the drug that contributed to the Insured Person&apos;s injury taken by him/her taken in accordance with proper medical prescription other than the treatment of drug addiction, alcoholism, or mental illness?</label>
+    <select id="prohibiteddrug" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<div>
+    <label>Was the Insured person's injury (directly or indirectly) contributed to by an elective surgery?</label>
+    <select id="prohibitedsurgery" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<div>
+    <label>Was the Insured person's injury (directly or indirectly) contributed to by any condition which is, results from or is a complication of any surgery, therapy or treatment administered on the Insured Person?</label>
+    <select id="prohibitedcomplication" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<div>
+    <label>Was the insured person's injury or illness a result of some act of war, revolution, strike, or terrorism?</label>
+    <select id="exception4.3a" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<div>
+    <label>Was the insured person's injury or illness a result of some illegal action done by themselves or a relative?</label>
+    <select id="exception4.3c" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<div>
+    <label>Was the insured person's injury or illness a result of homicide or assault?</label>
+    <select id="exception4.3e" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<div>
+    <label>Is the insured person's injury or illness a result of a pre-existing condition?</label>
+    <select id="exception4.3m" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<div>
+    <label>Is the insured person's condition a result from or a complication of infection with Human Immunodeficiency Virus (HIV) or any variance including Acquired Immune Deficiency Syndrome (AIDS)?</label>
+    <select id="exception4.3n" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<div>
+    <label>Is the insured person's condition an infection resulting from venereal disease?</label>
+    <select id="exception4.3o" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<div>
+    <label>Is the insured person's condition a result or complication of birth control, sterilization, infertility or treatment thereof, pregnancy, childbirth, caesarean, miscarriage or abortion?</label>
+    <select id="exception4.3p" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<div>
+    <label>Is the insured person's condition a result of any dental work or treatment, extraction of impacted teeth or wisdom teeth, eye examinations or anomalies and cosmetic or plastic surgery?</label>
+    <select id="exception4.3q" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<div>
+    <label>Is the insured person's condition a result of any treatment or surgical operation for hereditary or congenital conditions or birth defects and circumcision?</label>
+    <select id="exception4.3r" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<div>
+    <label>Is the insured person's condition a result of any treatment arising from any geriatric, psycho-geriatric or psychiatric condition, stress, anxiety, depression and nervous, emotional, and mental conditions or disorder?</label>
+    <select id="exception4.3s" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<div>
+    <label>Is the insured person's condition a result of any treatment for obesity, weight reduction or weight improvement?</label>
+    <select id="exception4.3t" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+    <label>Is the insured person's condition a result of any alcoholism or intoxication or experimental treatment methods such as rest cures or sanatoria care</label>
+    <select id="exception4.3u" onchange="modselector(this)">
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+<div>
+
+</div>
+
+<div>
+    <h3>Prediction</h3>
+    <h4 id="dailyincome"></h4>
+    <h4 id="surgical"></h4>
+    <h4 id="doubledaily"></h4>
+    <h4 id="homerecup"></h4>
+    <h4 id="explanation"></h4>
+</div>
+
+<p id="test" style="color:aquamarine">test</p>
+
+
+<!--=======================================================================-->
+
+<textarea id="lambda" type="text/hrf" style="display:none">
+    sameperson(1)
+    addwitness(0)
+    addsubstance(0)
+
+</textarea>
+
+<!--=======================================================================-->
+    <!--MASSIVE ERROR HIDING HERE - TECHNICALLY UNSAFE, I JUST RIGGED IT TO BE W SOME SUBGOALS AS POSITIVE, FIX FIX FIX FIX FIX-->
+
+
+<textarea id="library" type="text/hrf" style="display:none">
+
+
+    %%% EXCEPTIONS ALL OF THEM
+    passes_part4 :- prohibitedsurgery(0) %%% &  exception4.14.2_false & ~exception4.14.2 & prohibitedcomplication(0) & ~prohibited_drug_and_under_influence & ~exception4.3j & prohibiteddui(0) & prohibitedsuicide(0) & prohibitednuclear(0) & prohibitedxgames(0) & prohibitedseaorland(0) & exception4.3a(0) & exception4.3c(0) & exception4.3m(0) & exception4.3n(0) & exception4.3o(0) & exception4.3p(0) & exception4.3q(0) & exception4.3r(0) & exception4.3t(0) & exception4.3s(0) & exception4.3t(0) & exception4.3u(0)
+
+    style(test, color, red) :- passes_part4
+
+
+
+
+    value(exception4.3a, A) :- exception4.3a(A)
+    select(exception4.3a, A) :: exception4.3a(A)
+    select(exception4.3a, A) :: exception4.3a(B) ==> ~exception4.3a(B)
+
+    value(exception4.3c, A) :- exception4.3c(A)
+    select(exception4.3c, A) :: exception4.3c(A)
+    select(exception4.3c, A) :: exception4.3c(B) ==> ~exception4.3c(B)
+
+    value(exception4.3e, A) :- exception4.3e(A)
+    select(exception4.3e, A) :: exception4.3e(A)
+    select(exception4.3e, A) :: exception4.3e(B) ==> ~exception4.3e(B)
+
+    value(exception4.3m, A) :- exception4.3m(A)
+    select(exception4.3m, A) :: exception4.3m(A)
+    select(exception4.3m, A) :: exception4.3m(B) ==> ~exception4.3m(B)
+
+    value(exception4.3n, A) :- exception4.3n(A)
+    select(exception4.3n, A) :: exception4.3n(A)
+    select(exception4.3n, A) :: exception4.3n(B) ==> ~exception4.3n(B)
+
+    value(exception4.3o, A) :- exception4.3o(A)
+    select(exception4.3o, A) :: exception4.3o(A)
+    select(exception4.3o, A) :: exception4.3o(B) ==> ~exception4.3o(B)
+
+    value(exception4.3p, A) :- exception4.3p(A)
+    select(exception4.3p, A) :: exception4.3p(A)
+    select(exception4.3p, A) :: exception4.3p(B) ==> ~exception4.3p(B)
+
+    value(exception4.3q, A) :- exception4.3q(A)
+    select(exception4.3q, A) :: exception4.3q(A)
+    select(exception4.3q, A) :: exception4.3q(B) ==> ~exception4.3q(B)
+
+    value(exception4.3r, A) :- exception4.3r(A)
+    select(exception4.3r, A) :: exception4.3r(A)
+    select(exception4.3r, A) :: exception4.3r(B) ==> ~exception4.3r(B)
+
+    value(exception4.3s, A) :- exception4.3s(A)
+    select(exception4.3s, A) :: exception4.3s(A)
+    select(exception4.3s, A) :: exception4.3s(B) ==> ~exception4.3s(B)
+
+    value(exception4.3t, A) :- exception4.3t(A)
+    select(exception4.3t, A) :: exception4.3t(A)
+    select(exception4.3t, A) :: exception4.3t(B) ==> ~exception4.3t(B)
+
+    value(exception4.3u, A) :- exception4.3u(A)
+    select(exception4.3u, A) :: exception4.3u(A)
+    select(exception4.3u, A) :: exception4.3u(B) ==> ~exception4.3u(B)
+
+
+    value(exceptionprofessional, A) :- exceptionprofessional(A)
+    select(exceptionprofessional, A) :: exceptionprofessional(A)
+    select(exceptionprofessional, A) :: exceptionprofessional(B) ==> ~exceptionprofessional(B)
+    exception_professional :- exceptionprofessional(1)
+
+    value(prohibitedcomplication, A) :- prohibitedcomplication(A)
+    select(prohibitedcomplication, A) :: prohibitedcomplication(A)
+    select(prohibitedcomplication, A) :: prohibitedcomplication(B) ==> ~prohibitedcomplication(B)
+    prohibited_complication :- prohibitedcomplication(1)
+
+    value(prohibitedsurgery, A) :- prohibitedsurgery(A)
+    select(prohibitedsurgery, 0) :: prohibitedsurgery(0)
+    select(prohibitedsurgery, 1) :: prohibitedsurgery(1)
+    select(prohibitedsurgery, 1) :: prohibitedsurgery(0) ==> ~prohibitedsurgery(0)
+    select(prohibitedsurgery, 0) :: prohibitedsurgery(1) ==> ~prohibitedsurgery(1)
+
+    prohibited_surgery :- prohibitedsurgery(1)
+
+    value(substancetype(A), B) :- substclass(A, B)
+    select(substancetype(A), B) :: substclass(A, B)
+    select(substancetype(A), B) :: substclass(A, C) ==> ~substclass(A, C)
+    prohibited_drug_and_under_influence :- addsubstance(A) & or(substclass(A, alcohol),substclass(A,drugbad))
+
+    value(prohibiteddrug, A) :- prohibiteddrug(A)
+    select(prohibiteddrug, A) :: prohibiteddrug(A)
+    select(prohibiteddrug, A) :: prohibiteddrug(B) ==> ~prohibiteddrug(B)
+    prohibited_drug :- prohibiteddrug(1)
+
+    value(exceptionsdrug, A) :- exceptionsdrug(A)
+    select(exceptionsdrug, A) :: exceptionsdrug(A)
+    select(exceptionsdrug, A) :: exceptionsdrug(B) ==> ~exceptionsdrug(B)
+    exceptions_drug :- exceptionsdrug(1)
+
+    exception4.3j :- prohibiteddrug(0) & exceptionsdrug(1)
+
+    value(prohibiteddui, A) :- prohibiteddui(A)
+    select(prohibiteddui, A) :: prohibiteddui(A)
+    select(prohibiteddui, A) :: prohibiteddui(B) ==> ~prohibiteddui(B)
+    prohibited_dui :- prohibiteddui(1)
+
+    value(prohibitedsuicide, A) :- prohibitedsuicide(A)
+    select(prohibitedsuicide, A) :: prohibitedsuicide(A)
+    select(prohibitedsuicide, A) :: prohibitedsuicide(B) ==> ~prohibitedsuicide(B)
+    prohibited_suicide :- prohibitedsuicide(1)
+
+    value(prohibitednuclear, A) :- prohibitednuclear(A)
+    select(prohibitednuclear, A) :: prohibitednuclear(A)
+    select(prohibitednuclear, A) :: prohibitednuclear(B) ==> ~prohibitednuclear(B)
+    prohibited_nuclear :- prohibitednuclear(1)
+
+    value(prohibitedxgames, A) :- prohibitedxgames(A)
+    select(prohibitedxgames, A) :: prohibitedxgames(A)
+    select(prohibitedxgames, A) :: prohibitedxgames(B) ==> ~prohibitedxgames(B)
+    prohibited_x_games :- prohibitedxgames(1)
+
+    value(prohibitedseaorland, A) :- prohibitedseaorland(A)
+    select(prohibitedseaorland, A) :: prohibitedseaorland(A)
+    select(prohibitedseaorland, A) :: prohibitedseaorland(B) ==> ~prohibitedseaorland(B)
+    prohibited_seaorland :- prohibitedseaorland(1)
+
+    %%% deal with exceptions
+    %%% injured on prohibited job, initialize data & exception (4.1 and 4.2)
+    value(prohibitedjob, A) :- prohibitedjob(A)
+    select(prohibitedjob, A) :: prohibitedjob(A)
+    select(prohibitedjob, A) :: prohibitedjob(B) ==> ~prohibitedjob(B)
+
+    value(prohibitedtaxi, A) :- prohibitedtaxi(A)
+    select(prohibitedtaxi, A) :: prohibitedtaxi(A)
+    select(prohibitedtaxi, A) :: prohibitedtaxi(B) ==> ~prohibitedtaxi(B)
+
+    prohibited_job :- or(prohibitedjob(1), prohibitedtaxi(1))
+
+    value(injuryonjob, A) :- injuryonjob(A)
+    select(injuryonjob, A) :: injuryonjob(A)
+    select(injuryonjob, A) :: injuryonjob(B) ==> ~injuryonjob(B)
+    select(injuryonjob, A) :: injuryonjob(0) ==> ~injuryonjob(0)
+    select(injuryonjob, A) :: injuryonjob(1) ==> ~injuryonjob(1)
+    injury_on_job :- injuryonjob(1)
+
+    exception4.14.2 :- prohibited_job & injury_on_job
+
+    exception4.14.2_false :- injuryonjob(0)
+
+    %%% THE RULESET %%%
+    %%% Helper relations
+    %% if true X lessthan Y
+    lessthan(X,Y) :- evaluate(min(X,Y),X) & distinct(X,Y)
+    %% used in max_730
+    2_year_dif(YEARSTART, YEAREND) :- evaluate(minus(YEAREND,YEARSTART), A) & ~distinct(A, 2)
+    within_2(YEARSTART, YEAREND) :- or(~distinct(YEARSTART, YEAREND), evaluate(minus(YEAREND, YEARSTART), A) & ~distinct(A, 1))
+    %% used in within_30
+    dif_of_one(X, Y) :- evaluate(minus(X, Y), Z) & evaluate(minus(Y, X), Q) & or(~distinct(Q, 1), ~distinct(Z, 1))
+
+    %%% THE BIG BOYS
+
+    %%%
+    dailyincomeben :- or(predict_accident_claim, predict_illness_claim)
+    innerhtml(dailyincome, "We predict that you qualify for the daily hospital income benefit ONLY the first 730 days of hospitalization, any days beyond this limit are not covered.") :- dailyincomeben & ~max_730(MONTHSTART, DAYSTART, YEARSTART, MONTHEND, DAYEND, YEAREND)
+    innerhtml(dailyincome, "Congratulations, we predict that you qualify for the daily hospital income benefit for every day you spent in the hospital.") :- dailyincomeben & max_730(MONTHSTART, DAYSTART, YEARSTART, MONTHEND, DAYEND, YEAREND)
+    innerhtml(dailyincome, "You qualify for nothing") :- ~dailyincomeben
+
+    predict_accident_claim :- hosp_end(MONTHEND, DAYEND, YEAREND) & plan_hospitalcover.main.begindate(A, B, C) & hosp_start(MONTHSTART, DAYSTART, YEARSTART) & accidentdate(MONTHACC, DAYACC, YEARACC) & plan_in_effect(A, B, C, MONTHSTART, DAYSTART, YEARSTART) & within_30(MONTHACC, DAYACC, YEARACC, MONTHSTART, DAYSTART, YEARSTART) & physicianref(1) & or(prior_hospitalization_samecondition(PRIORMONTH, PRIORDAY, PRIORYEAR) & ~within_one_year(PRIORMONTH, PRIORDAY, PRIORYEAR, MONTHSTART, DAYSTART, YEARSTART), ~prior_hospitalization_samecondition(PRIORMONTH, PRIORDAY, PRIORYEAR)) & passes_part4
+
+    predict_illness_claim :- hosp_end(MONTHEND, DAYEND, YEAREND) & plan_hospitalcover.main.begindate(A, B, C) & hosp_start(MONTHSTART, DAYSTART, YEARSTART) & plan_in_effect(A, B, C, MONTHSTART, DAYSTART, YEARSTART) & physicianref(1) or(prior_hospitalization_samecondition(PRIORMONTH, PRIORDAY, PRIORYEAR) & ~within_one_year(PRIORMONTH, PRIORDAY, PRIORYEAR, MONTHSTART, DAYSTART, YEARSTART), ~prior_hospitalization_samecondition(PRIORMONTH, PRIORDAY, PRIORYEAR)) & passes_part4
+
+    %% Surgical benefit
+    value(surgplan, A) :- surgplan(A)
+    select(surgplan, A) :: surgplan(A)
+    select(surgplan, A) :: surgplan(B) ==> ~surgplan(B)
+
+    value(surghapp, A) :- surghapp(A)
+    select(surghapp, A) :: surghapp(A)
+    select(surghapp, A) :: surghapp(B) ==> ~surghapp(B)
+
+    lessthan_10(M1, D1, Y1, M2, D2, Y2) :- hosp_start(M1, D1, Y1) & hosp_end(M2, D2, Y2) & or(lessthan(Y1, Y2), ~distinct(Y1, Y2) & lessthan(M1, M2), ~distinct(Y1, Y2) & ~distinct(M1, M2) & lessthan(D1, D2)) & or(~distinct(Y1, Y2) & ~distinct(M1, M2) & evaluate(minus(D2, D1), A) & lessthan(A, 10), dif_of_one(Y1, Y2) & ~distinct(M1, 12) & ~distinct(M2, 1) & evaluate(minus(31, D1), F) & evaluate(plus(F, D2), Q) & lessthan(Q, 10), ~distinct(Y1, Y2) & dif_of_one(M1, M2) & lessthan(M1, M2) & or(~distinct(M1, 1), ~distinct(M1, 3), ~distinct(M1, 5), ~distinct(M1, 7), ~distinct(M1, 8), ~distinct(M1, 10)) & evaluate(minus(31, D1), F) & evaluate(plus(F, D2), Q) & lessthan(Q, 10), ~distinct(Y1, Y2) & dif_of_one(M1, M2) & lessthan(M1, M2) & ~or(~distinct(M1, 2), ~distinct(M1,4), ~distinct(M1,6), ~distinct(M1,9), ~distinct(M1,11)) & evaluate(minus(30,D1), F) & evaluate(plus(F, D2), Q) & lessthan(Q, 10))
+
+    predict_surgicalbenefit :- dailyincomeben & surgplan(1) & surghapp(1) & ~lessthan_10(M1, D1, Y1, M2, D2, Y2)
+    innerhtml(surgical, "Congratulations, you qualify for an additional surgical benefit within the above timeframe.") :- predict_surgicalbenefit
+    innerhtml(surgical, "") :- ~predict_surgicalbenefit
+
+    %% Double Daily
+    value(icu, A) :- icu(A)
+    select(icu, A) :: icu(A)
+    select(icu, A) :: icu(B) ==> ~icu(B)
+
+    value(hospoverseas, A) :- hospoverseas(A)
+    select(hospoverseas, A) :: hospoverseas(A)
+    select(hospoverseas, A) :: hospoverseas(B) ==> ~hospoverseas(B)
+
+    value(critillness, A) :- critillness(A)
+    select(critillness, A) :: critillness(A)
+    select(critillness, A) :: critillness(B) ==> ~critillness(B)
+
+    predict_doublebenny :- dailyincomeben & or(icu(1), hospoverseas(1), critillness(1))
+    innerhtml(doubledaily, "Congratulations, you qualify for an additional double daily hospital benefit within the above timeframe.") :- predict_doublebenny
+
+    %% Home recuperation benefit
+    lessthan_5(M1, D1, Y1, M2, D2, Y2) :- hosp_start(M1, D1, Y1) & hosp_end(M2, D2, Y2) & or(lessthan(Y1, Y2), ~distinct(Y1, Y2) & lessthan(M1, M2), ~distinct(Y1, Y2) & ~distinct(M1, M2) & lessthan(D1, D2)) & or(~distinct(Y1, Y2) & ~distinct(M1, M2) & evaluate(minus(D2, D1), A) & lessthan(A, 10), dif_of_one(Y1, Y2) & ~distinct(M1, 12) & ~distinct(M2, 1) & evaluate(minus(31, D1), F) & evaluate(plus(F, D2), Q) & lessthan(Q, 5), ~distinct(Y1, Y2) & dif_of_one(M1, M2) & lessthan(M1, M2) & or(~distinct(M1, 1), ~distinct(M1, 3), ~distinct(M1, 5), ~distinct(M1, 7), ~distinct(M1, 8), ~distinct(M1, 10)) & evaluate(minus(31, D1), F) & evaluate(plus(F, D2), Q) & lessthan(Q, 5), ~distinct(Y1, Y2) & dif_of_one(M1, M2) & lessthan(M1, M2) & ~or(~distinct(M1, 2), ~distinct(M1,4), ~distinct(M1,6), ~distinct(M1,9), ~distinct(M1,11)) & evaluate(minus(30,D1), F) & evaluate(plus(F, D2), Q) & lessthan(Q, 5))
+
+    home_recuperation :- or(predict_doublebenny, dailyincomben) & ~lessthan_5(M1, D1, Y1, M2, D2, Y2)
+    innerhtml(homerecup, "We also predict that you may qualify for a home recuperation benefit of up to 60 days.") :- home_recuperation
+
+    %%% Check that the plan is in effect BEFORE the hospital admittence
+    plan_in_effect(MONTHBEGIN, DAYBEGIN, YEARSTART, MONTHACC, DAYACC, YEARACC) :- plan_hospitalcover.main.begindate(MONTHSTART, DAYSTART, YEARSTART) & hosp_start(MONTHACC, DAYACC, YEARACC) & or(lessthan(YEARSTART, YEARACC), ~distinct(YEARACC, YEARSTART) & lessthan(MONTHSTART, MONTHACC), ~distinct(YEARACC, YEARSTART) & ~distinct(MONTHSTART, MONTHACC) & lessthan(DAYSTART, DAYACC))
+
+    %%% Check that hospitalization is a max of 730 days (max_730) + helpers (if it exceeds 730 days, we just tell them they get X benefit for only 730 days of the time outlined)
+    max_730(MONTHSTART, DAYSTART, YEARSTART, MONTHEND, DAYEND, YEAREND) :- hosp_start(MONTHSTART, DAYSTART, YEARSTART) & hosp_end(MONTHEND, DAYEND, YEAREND) & or(~distinct(MONTHSTART, MONTHEND) & ~distinct(DAYSTART, DAYEND) & 2_year_dif(YEARSTART, YEAREND), within_2(YEARSTART, YEAREND))
+
+    %%% Check that accident commencement was
+    within_30(MONTHACC, DAYACC, YEARACC, MONTHSTART, DAYSTART, YEARSTART) :- accidentdate(MONTHACC, DAYACC, YEARACC) & hosp_start(MONTHSTART, DAYSTART, YEARSTART) & or(lessthan(YEARACC, YEARSTART), ~lessthan(YEARACC, YEARSTART) & lessthan(MONTHACC, MONTHSTART), ~distinct(YEARACC, YEARSTART) & ~distinct(MONTHACC, MONTHSTART) & lessthan(DAYACC, DAYSTART)) & or(~distinct(YEARACC, YEARSTART) & ~distinct(MONTHACC, MONTHSTART), dif_of_one(YEARACC, YEARSTART) & ~distinct(MONTHACC, 12) & ~distinct(MONTHSTART, 1) & evaluate(minus(31, DAYACC), F) & evaluate(plus(F, DAYSTART), Q) & lessthan(Q, 31), distinct(MONTHACC, MONTHSTART) & ~distinct(YEARACC, YEARSTART) & or(~distinct(MONTHACC, 1), ~distinct(MONTHACC, 3), ~distinct(MONTHACC, 5), ~distinct(MONTHACC, 7), ~distinct(MONTHACC, 8), ~distinct(MONTHACC, 10)) & evaluate(minus(31, DAYACC), F) & evaluate(plus(F, DAYSTART), Q) & lessthan(Q, 31), distinct(MONTHACC, MONTHSTART) & ~distinct(YEARACC, YEARSTART) & or(~distinct(MONTHACC, 2), ~distinct(MONTHACC, 4), ~distinct(MONTHACC, 6), ~distinct(MONTHACC, 9), ~distinct(MONTHACC, 11)) & evaluate(minus(30, DAYACC), F) & evaluate(plus(F, DAYSTART), Q) & lessthan(Q, 31))
+
+    %% check whether prior hospitalizations (of the same condition) are within one year of each other
+    within_one_year(PRIORMONTH, PRIORDAY, PRIORYEAR, MONTHSTART, DAYSTART, YEARSTART) :- prior_hospitalization_samecondition(PRIORMONTH, PRIORDAY, PRIORYEAR) & hosp_start(MONTHSTART, DAYSTART, YEARSTART) & evaluate(minus(YEARSTART, PRIORYEAR), A) & or(~distinct(PRIORYEAR, YEARSTART), ~distinct(A, 1) & lessthan(MONTHSTART, PRIORMONTH), ~distinct(A, 1) & ~distinct(PRIORMONTH, MONTHSTART) & lessthan(DAYSTART, PRIORDAY))
+
+    %%% HANDLE INPUTS -- INITIALIZE LAMBDA -- HANDLE INPUTS %%%
+    %%% Initialize Main Policyholder Info
+
+    %%% Initialize Claimmant Info
+    %%% Initialize beginning of plan
+    %% month
+    value(planbeginmonth, A) :- planbeginmonth(A)
+    select(planbeginmonth, A) :: planbeginmonth(A)
+    select(planbeginmonth, A) :: planbeginmonth(B) ==> ~planbeginmonth(B)
+    %% day
+    value(planbeginday, A) :- planbeginday(A)
+    select(planbeginday, A) :: planbeginday(A)
+    select(planbeginday, A) :: planbeginday(B) ==> ~planbeginday(B)
+    %% year
+    value(planbeginyear, A) :- planbeginyear(A)
+    select(planbeginyear, A) :: planbeginyear(A)
+    select(planbeginyear, A) :: planbeginyear(B) ==> ~planbeginyear(B)
+      %% actual lambda val
+      plan_hospitalcover.main.begindate(MONTHSTART, DAYSTART, YEARSTART) :- planbeginmonth(MONTHSTART) & planbeginday(DAYSTART) & planbeginyear(YEARSTART)
+
+    %%% INITIALIZE CLAIM DETAIL %%%
+    %%% Initialize date of admittence to hospital
+    %% month
+    value(monthstart, A) :- monthstart(A)
+    select(monthstart, A) :: monthstart(A)
+    select(monthstart, A) :: monthstart(B) ==> ~monthstart(B)
+    %% day
+    value(daystart, A) :- daystart(A)
+    select(daystart, A) :: daystart(A)
+    select(daystart, A) :: daystart(B) ==> ~daystart(B)
+    %% year
+    value(yearstart, A) :- yearstart(A)
+    select(yearstart, A) :: yearstart(A)
+    select(yearstart, A) :: yearstart(B) ==> ~yearstart(B)
+      %% actual lambda val
+      hosp_start(MONTHSTART, DAYSTART, YEARSTART) :- monthstart(MONTHSTART) & daystart(DAYSTART) & yearstart(YEARSTART)
+    %%% Initialize date discharged from hospital
+    %% month
+    value(monthend, A) :- monthend(A)
+    select(monthend, A) :: monthend(A)
+    select(monthend, A) :: monthend(B) ==> ~monthend(B)
+    %% day
+    value(dayend, A) :- dayend(A)
+    select(dayend, A) :: dayend(A)
+    select(dayend, A) :: dayend(B) ==> ~dayend(B)
+    %% year
+    value(yearend, A) :- yearend(A)
+    select(yearend, A) :: yearend(A)
+    select(yearend, A) :: yearend(B) ==> ~yearend(B)
+      %% actual lambda val
+      hosp_end(MONTHEND, DAYEND, YEAREND) :- monthend(MONTHEND) & dayend(DAYEND) & yearend(YEAREND)
+
+    %%% Initialize Physician Approval (TODO: Integrate actual physician approval from separate form)
+    value(physicianref, A) :- physicianref(A)
+    select(physicianref, A) :: physicianref(A)
+    select(physicianref, A) :: physicianref(B) ==> ~physicianref(B)
+
+    %%% if prior hospitalization, initialize that date
+    %% month
+    value(monthpriorhosp, A) :- monthpriorhosp(A)
+    select(monthpriorhosp, A) :: monthpriorhosp(A)
+    select(monthpriorhosp, A) :: monthpriorhosp(B) ==> ~monthpriorhosp(B)
+    %% day
+    value(daypriorhosp, A) :- daypriorhosp(A)
+    select(daypriorhosp, A) :: daypriorhosp(A)
+    select(daypriorhosp, A) :: daypriorhosp(B) ==> ~dayend(B)
+    %% year
+    value(yearpriorhosp, A) :- yearpriorhosp(A)
+    select(yearpriorhosp, A) :: yearpriorhosp(A)
+    select(yearpriorhosp, A) :: yearpriorhosp(B) ==> ~yearpriorhosp(B)
+        %% actual lambda val
+        prior_hospitalization_samecondition(PRIORMONTH, PRIORDAY, PRIORYEAR) :- monthpriorhosp(PRIORMONTH) & daypriorhosp(PRIORDAY) & yearpriorhosp(PRIORYEAR)
+
+    %%% INITIALIZE ACCIDENT DATA %%%
+    %%% Initialize date of accident
+    %% month
+    value(monthacc, A) :- monthacc(A)
+    select(monthacc, A) :: monthacc(A)
+    select(monthacc, A) :: monthacc(B) ==> ~monthacc(B)
+    %% day
+    value(dayacc, A) :- dayacc(A)
+    select(dayacc, A) :: dayacc(A)
+    select(dayacc, A) :: dayacc(B) ==> ~dayacc(B)
+    %% year
+    value(yearacc, A) :- yearacc(A)
+    select(yearacc, A) :: yearacc(A)
+    select(yearacc, A) :: yearacc(B) ==> ~yearacc(B)
+      %% actual lambda val
+      accidentdate(MONTHACC, DAYACC, YEARACC) :- claimtype(accident) & monthacc(MONTHACC) & dayacc(DAYACC) & yearacc(YEARACC)
+
+    %%% INITIALIZE INJURY DATA
+
+    %%% FORMATTING -- CONDITIONAL RENDERING OF FIELDS -- FORMATTING %%%
+
+    %%% Handle HTML display for separate claimant information
+    click(isnotsameperson) :: sameperson(1) ==> ~sameperson(1) & sameperson(0)
+    click(issameperson) :: sameperson(0) ==> ~sameperson(0) & sameperson(1)
+    style(separateinfo,visibility,visible) :- sameperson(0)
+    style(separateinfo,visibility,hidden) :- sameperson(1)
+
+    %%% Handle HTML display for wire vs check payment
+    value(paymentmethod, A) :- paymentmethod(A)
+    select(paymentmethod, A) :: paymentmethod(A)
+    select(paymentmethod, A) :: paymentmethod(B) ==> ~paymentmethod(B)
+    style(paymentmethod(A), visibility, visible) :- paymentmethod(A)
+    style(paymentmethod(A), visibility, hidden) :- ~paymentmethod(A)
+
+    %%% Handle HTML display for illness vs accident
+    value(claimtype, A) :- claimtype(A)
+    select(claimtype, A) :: claimtype(A)
+    select(claimtype, A) :: claimtype(B) & addwitness(X) ==> ~claimtype(B) & ~addwitness(X) & addwitness(0)
+    style(claimtype(A), visibility, visible) :- claimtype(A)
+    style(claimtype(A), visibility, hidden) :- ~claimtype(A)
+
+    %%% Handle HTML display for additional witnesses
+    click(addwitness) :: addwitness(A) & evaluate(plus(A, 1), Q) ==> ~addwitness(A) & addwitness(Q)
+    style(witness(A), visibility, visible) :- addwitness(A)
+    style(witness(A), visibility, hidden) :- ~claimtype(accident)
+
+    %%% Handle HTML display for substance information
+    value(substancestatus, A) :- substancestatus(A)
+    select(substancestatus, A) :: substancestatus(A)
+    select(substancestatus, A) :: substancestatus(B) ==> ~substancestatus(B)
+    style(substancestatus(A), visibility, visible) :- substancestatus(A)
+    style(substancestatus(A), visibility, hidden) :- ~substancestatus(A)
+
+    %%% Handle HTML display for additional substance entries
+    click(addsubstance) :: addsubstance(A) & evaluate(plus(A, 1), Q) ==> ~addsubstance(A) & addsubstance(Q)
+    style(substance(A), visibility, visible) :- addsubstance(A)
+
+
+
+
+</textarea>
+
+
+<!--=======================================================================-->
+
+  </center>
+
+
+<!--=======================================================================-->
+
+<div id="b8161a93-7ff4-48bc-a2eb-069fd0a17b2b-bottom"></div></body></html>

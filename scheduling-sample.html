@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<!--=======================================================================-->
+
+<head>
+  <script type="text/javascript" src="epilog.js"></script>
+  <script type="text/javascript" src="worksheets.js"></script>
+</head>
+
+<!--=======================================================================-->
+
+<body onload='initialize()'>
+  <center>
+
+<!--=======================================================================-->
+
+<table cellspacing='0' border='1'>
+  <tr>
+    <th style='background-color:#eeeeee'>Course</th>
+    <th style='background-color:#eeeeee'>Room</th>
+    <th style='background-color:#eeeeee'>Time</th>
+  </tr>
+  <tr>
+    <th style='background-color:#eeeeee'>cs151</th>
+    <td>
+      <select id='room(cs151)' style='width:80' onchange='modselector(this)'>
+        <option value='unknown'></option>
+        <option>g100</option>
+        <option>g200</option>
+        <option>g300</option>
+      </select>
+    </td>
+    <td>
+      <select id='time(cs151)' style='width:80' onchange='modselector(this)'>
+        <option value='unknown'></option>
+        <option>morning</option>
+        <option>afternoon</option>
+        <option>evening</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th style='background-color:#eeeeee'>cs157</th>
+    <td>
+      <select id='room(cs157)' style='width:80' onchange='modselector(this)'>
+        <option value='unknown'></option>
+        <option>g100</option>
+        <option>g200</option>
+        <option>g300</option>
+      </select>
+    </td>
+    <td>
+      <select id='time(cs157)' style='width:80' onchange='modselector(this)'>
+        <option value='unknown'></option>
+        <option>morning</option>
+        <option>afternoon</option>
+        <option>evening</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th style='background-color:#eeeeee'>cs161</th>
+    <td>
+      <select id='room(cs161)' style='width:80' onchange='modselector(this)'>
+        <option value='unknown'></option>
+        <option>g100</option>
+        <option>g200</option>
+        <option>g300</option>
+      </select>
+    </td>
+    <td>
+      <select id='time(cs161)' style='width:80' onchange='modselector(this)'>
+        <option value='unknown'></option>
+        <option>morning</option>
+        <option>afternoon</option>
+        <option>evening</option>
+      </select>
+    </td>
+  </tr>
+</table>
+
+<br/>
+<table cellspacing='0' border='1'>
+  <tr>
+    <th style='background-color:#eeeeee'>Schedule</th>
+    <th style='background-color:#eeeeee'>g100</th>
+    <th style='background-color:#eeeeee'>g200</th>
+    <th style='background-color:#eeeeee'>g300</th>
+  </tr>
+  <tr>
+    <th style='background-color:#eeeeee'>morning</th>
+    <td>
+      <select id="event(g100,morning)" style='width:80' onchange='modselector(this)'>
+        <option value='unknown'></option>
+        <option>cs151</option>
+        <option>cs157</option>
+        <option>cs161</option>
+      </select>
+    </td>
+    <td>
+      <select id="event(g200,morning)" style='width:80' onchange='modselector(this)'>
+        <option value='unknown'></option>
+        <option>cs151</option>
+        <option>cs157</option>
+        <option>cs161</option>
+      </select>
+    </td>
+    <td>
+      <select id="event(g300,morning)" style='width:80' onchange='modselector(this)'>
+        <option value='unknown'></option>
+        <option>cs151</option>
+        <option>cs157</option>
+        <option>cs161</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th style='background-color:#eeeeee'>afternoon</th>
+    <td>
+      <select id="event(g100,afternoon)" style='width:80' onchange='modselector(this)'>
+        <option value='unknown'></option>
+        <option>cs151</option>
+        <option>cs157</option>
+        <option>cs161</option>
+      </select>
+    </td>
+    <td>
+      <select id="event(g200,afternoon)" style='width:80' onchange='modselector(this)'>
+        <option value='unknown'></option>
+        <option>cs151</option>
+        <option>cs157</option>
+        <option>cs161</option>
+      </select>
+    </td>
+    <td>
+      <select id="event(g300,afternoon)" style='width:80' onchange='modselector(this)'>
+        <option value='unknown'></option>
+        <option>cs151</option>
+        <option>cs157</option>
+        <option>cs161</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th style='background-color:#eeeeee'>evening</th>
+    <td>
+      <select id="event(g100,evening)" style='width:80' onchange='modselector(this)'>
+        <option value='unknown'></option>
+        <option>cs151</option>
+        <option>cs157</option>
+        <option>cs161</option>
+      </select>
+    </td>
+    <td>
+      <select id="event(g200,evening)" style='width:80' onchange='modselector(this)'>
+        <option value='unknown'></option>
+        <option>cs151</option>
+        <option>cs157</option>
+        <option>cs161</option>
+      </select>
+    </td>
+    <td>
+      <select id="event(g300,evening)" style='width:80' onchange='modselector(this)'>
+        <option value='unknown'></option>
+        <option>cs151</option>
+        <option>cs157</option>
+        <option>cs161</option>
+      </select>
+    </td>
+  </tr>
+</table>
+<br/>
+
+<!--=======================================================================-->
+
+<textarea id='lambda' type='text/hrf' style='display:none'>
+  room(cs151,g100)
+  time(cs151,morning)
+  room(cs157,g200)
+  time(cs157,afternoon)
+  room(cs161,g300)
+  time(cs161,evening)
+</textarea>
+
+<!--=======================================================================-->
+
+<textarea id='library' type='text/hrf' style='display:none'>
+
+select(room(E),R) :: distinct(R,unknown) ==> room(E,R)
+select(room(E),R) :: room(E,O) ==> ~room(E,O)
+select(room(E),R) :: room(OE,R) & time(E,T) & time(OE,T) ==> ~room(OE,R)
+
+select(time(E),T) :: distinct(T,unknown) ==> time(E,T)
+select(time(E),T) :: time(E,O) ==> ~time(E,O)
+select(time(E),T) :: time(OE,T) & room(E,R) & room(OE,R) ==> ~time(OE,T)
+
+select(event(R,T),E) :: distinct(E,unknown) ==> room(E,R) & time(E,T)
+select(event(R,T),E) :: room(O,R) & time(O,T) ==> ~room(O,R) & ~time(O,T)
+select(event(R,T),E) :: room(E,OR) & time(E,OT) ==> ~room(E,OR) & ~time(E,OT)
+
+value(room(E),R) :- room(E,R)
+value(time(E),T) :- time(E,T)
+value(event(R,T),E) :- room(E,R) & time(E,T)
+
+</textarea>
+
+<!--=======================================================================-->
+
+  </center>
+</body>
+
+<!--=======================================================================-->
+
+</html>

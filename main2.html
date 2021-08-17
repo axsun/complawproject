@@ -187,7 +187,7 @@
                 <option value="1">Yes</option>
                 <option value="0">No</option>
               </select><br><br>
-          
+
           <div id="uninhabitablestuff" style='display:none'>
             <!-- If yes, then answer the following -->
             <input type="checkbox" id="leakyceiling" name="3aknown" value="1">
@@ -240,8 +240,8 @@
             <label for="other">Other:
               <input type="text" id="other" name="other">
             </label><br><br><hr>
-          
-        
+
+
 
       <div>
         <!-- question 3b -->
@@ -259,12 +259,12 @@
             <option value="1">Yes</option>
             <option value="0">No</option>
           </select><br><br>
-          
+
           <p id="adddocuments" style="color:darkred"></p>
           <form id="upload1" action="upload.php" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" size="50" /> 
-            <br />    
-            <input type="submit" value="Upload" />    
+            <input type="file" name="file" size="50" />
+            <br />
+            <input type="submit" value="Upload" />
             </form>
         </div>
         <h4>Did Plaintiff increase, demand or collect rent when uninhabitable conditions exist(ed) and have not been fixed within 35 days after written notice from a public officer or employee to abate?</h4>
@@ -275,15 +275,15 @@
         </select><br><br>
         <p id="notice1" style="color:darkred"></p>
         <form id="upload2" action="upload.php" method="post" enctype="multipart/form-data" style='display:none'>
-          <input type="file" name="file" size="50" /> 
-          <br />    
-          <input type="submit" value="Upload" />    
+          <input type="file" name="file" size="50" />
+          <br />
+          <input type="submit" value="Upload" />
           </form>
       </div>
 
         <!--
           CONSIDER ANSWERING THIS QUESTION FOR THEM USING THE INFO YOU ALREADY HAVE
-          
+
           <h4>Does the property have serious health, safety, fire or building code violations with a written notice from a governmental agency to fix the situation?</h4>
         <label for="ViolationCitation">
           <input id="ViolationCitation" value="yes" type="radio" name="ViolationCitation-YesNo">Yes
@@ -291,7 +291,7 @@
         <label for="NotViolationCitation">
           <input id="NotViolationCitation" value="no" type="radio" name="ViolationCitation-YesNo">No
         </label><br><br>
-      
+
         <h4>Did over 6 months pass after the notice from the government agency without the violation being fixed?</h4>
         <label for="60dmonthminimum">
           <input id="60dmonthminimum" value="yes" type="radio" name="60dmonthminimum-YesNo">Yes
@@ -326,7 +326,7 @@
         <!-- <h4 style="color:red">Placeholder for: A substandard order was issued and the Plaintiff is attempting to evict the tenant in violation of the Long Beach Municipal Code</h4> -->
 
         <!-- QUESTION 3B -->
-        
+
         <!-- <h4>3b. Check all of the following that are true.</h4>
         <input type="checkbox" id="knownrepair" name="knownrepair" value="yes">
         <label for="repair">There was a needed repair that your landlord knew about and did not provide within a reasonable time
@@ -344,6 +344,220 @@
     </section>
 
     </div>
+
+    <section id="3n">
+      <h4>3n. Does your landlord want to kick you out for reasons that are non-financial and do not constitute just cause, meaning that your landlord does not state and/or have just cause basis for the eviction?</h4>
+      <h5>Some examples of "just cause" include: </h5>
+      <h5>1. You violated a clause in the lease after being issued a written notice to correct the violation</h5>
+      <h5>2. Your landlord is withdrawing the property from the rental market</h5>
+      <h5>3. The building is going to be remodeled or demolished</h5>
+      <select id="nonfinancialunjustcause" onchange='modselector(this)'>
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select><br><br>
+    </section>
+
+    <section id="3o">
+      <h4>3o. Did your landlord violate state or local laws regarding COVID era evictions?</h4>
+      <h5>Please check this box if:</h5>
+      <!-- This is based on  COVID 19 rules for City of Los Angeles -->
+      <h5>1. The rent demanded was properly delayed because tenant was unable to pay due to circumstances related to the COVID-19 pandemic and Tenant gave notice of inability to pay.</h5>
+      <h5>2. The notice demands more rent than owed because Landlord improperly raised the rent during the rent freeze enacted due to COVID-19.</h5>
+      <h5>3. The eviction is based on the presence of pet(s) during the Local Emergency Period.</h5>
+      <h5>4. The notice is defective because it demands interest and/or a late fee for rent not paid during the Local Emergency Period.</h5>
+      <h5>5. The eviction is based on the presence of unauthorized occupant(s) during the Local Emergency Period.</h5>
+      <select id="covidviolation" onchange='modselector(this)'>
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select><br><br>
+    </section>
+
+    <section id="3p">
+       <h4>3p. You provided your landlord with a declaration, made under the penalty of perjury, of the Center for Disease Controls (CDC) temporary halt in eviction, and the landlord is now trying evict you for a reason covered under that halt in evictions.</h4>
+       <select id="cdcmoratorium" onchange='modselector(this)'>
+         <option value="unknown"></option>
+         <option value="yes">Yes</option>
+         <option value="no">No</option>
+       </select><br><br>
+
+       <div id = "cdcmoratorium(yes)" style="display:none">
+         <label for="cdcmoratoriumdeclaration">Please describe when and how you provided this declaration:</label>
+         <input type="text" id="cdcmoratoriumdeclaration" onchange="modtext(this)" autoquote><br><br>
+         <input type="submit" value="Submit">
+       </div>
+    </section>
+
+    <section id="3q">
+       <h4>3q. Is your home covered by the Federal CARES act, and did your landlord violate the Federal CARES act?</h4>
+       <select id="caresviolation" onchange='modselector(this)'>
+         <option value="unknown"></option>
+         <option value="yes">Yes</option>
+         <option value="no">No</option>
+       </select><br><br>
+       <div id="caresviolation(yes)" style="display:none">
+         <h4>Which of the following apply?</h4>
+           <input type="checkbox" id="caresviolation1" value="1">
+           <label for="caresviolation1">Landlord initiated the eviction for nonpayment during the 120-day period following March 27, 2020.</label><br>
+           <input type="checkbox" id="caresviolation2"  value="1">
+           <label for="caresviolation2">Landlord initiated the eviction at least 120 days after March 27, but landlord provided less than 30 days notice for the underlying eviction action.</label><br>
+           <label for="othercaresviolation">Other CARES violation:</label>
+           <input type="text" id="othercaresviolation" onchange="modtext(this)" autoquote><br><br>
+           <input type="submit" value="Submit">
+         <h4>Which of the following apply?</h4>
+           <input type="checkbox" id="forbearance" value="1">
+           <label for="forbearance">The property had a federally backed mortgage that was in forbearance when your landlord filed for eviction.</label><br>
+           <input type="checkbox" id="carersact30daynotice" value="1">
+           <label for="caresact30daynotice">Your landlord did not give the required 30 days notice</label><br>
+       </div>
+    </section>
+
+    <section id="3r">
+      <h4>3r. Did your landlord improperly use payments you made for the tenancy between March 1, 2020 and June 30, 2021?</h4>
+      <select id="improperuseofpayment" onchange='modselector(this)'>
+        <option value="unknown"></option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select><br>
+      <div id = "improperuseofpayment(yes)" style="display:none">
+        <h4>Which of the following apply?</h4>
+        <input type="checkbox" id="improperuseofpayment1" value="1">
+        <label for="improperuseofpayment1">Your landlord applied your security deposit to rent, or other financial obligations, without your written agreement</label><br>
+        <input type="checkbox" id="improperuseofpayment2"  value="1">
+        <label for="improperuseofpayment2">Your landlord applied a monthly rental payment to rent, or other financial obligations, that were due between March 1, 2020 and June 30, 2021 without your written agreement.</label>
+      </div>
+    </section>
+
+    <section id="3s">
+      <h4>3s. Did your landlord refuse money from a third party for rent due?</h4>
+      <select id="refusethirdpartypayment" onchange='modselector(this)'>
+        <option value="unknown"></option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select><br><br>
+      <div id="refusethirdpartypayment(yes)" style="display:none">
+        <label for="thirdpartypaymentexplanation">Please provide a description of what happened: </label>
+        <input type="text" id="thirdpartypaymentexplanation" onchange="modtext(this)" autoquote><br><br>
+        <input type="submit" value="Submit">
+      </div>
+    </section>
+
+    <section id="3t">
+      <h4>3t. Do you have a disability for which your landlord refused to provide reasonable accommodation?</h4>
+      <select id="nodisabilityaccommodation" onchange='modselector(this)'>
+        <option value="unknown"></option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select><br><br>
+      <div id="nodisabilityaccommodation(yes)" style="display:none">
+        <label for="nodisabilityaccommodationexplanation">Please provide a description of what happened: </label>
+        <input type="text" id="nodisabilityaccommodationexplanation" onchange="modtext(this)" autoquote><br><br>
+        <input type="submit" value="Submit">
+      </div>
+    </section>
+
+    <section id="3u">
+      <h4>3u. Do you have other defenses and objections?</h4>
+      <select id="otherdefenses" onchange='modselector(this)'>
+        <option value="unknown"></option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select><br><br>
+      <div id="otherdefenses(yes)" style="display:none">
+        <label for="otherdefensesexplanation">Please provide an explanation below: </label>
+        <input type="text" id="otherdefensesexplanation" onchange="modtext(this)" autoquote><br><br>
+        <input type="submit" value="Submit">
+      </div>
+    </section>
+
+    <!-- <section id="3v">
+      <h4>3v. provide vacts for each item checked above</h4>
+      <select id="nonfinancialunjustcause" onchange='modselector(this)'>
+        <option value="unknown"></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select><br><br>
+    </section> -->
+
+
+    <!--    SECTION 4: OTHER STATEMENTS  -->
+    <section id="4a">
+      <h4>4a. Have you vacated the premises?</h4>
+      <select id="vacated" onchange='modselector(this)'>
+        <option value="unknown"></option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select><br><br>
+      <div id="vacated(yes)" style="display:none">
+        <label for="vacateddate">Please fill out the day you moved out (MM/DD/YYYY): </label>
+        <input type="text" id="vacateddate" onchange="modtext(this)" autoquote>
+        <input type="submit" value="Submit">
+      </div>
+    </section>
+
+    <section id="4b">
+      <h4>4b. Do you believe that your rent was unfairly or excessively high?</h4>
+      <select id="excessiverent" onchange='modselector(this)'>
+        <option value="unknown"></option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select><br><br>
+      <div id="excessiverent(yes)" style="display:none">
+        <label for="excessiverentexplanation">Please explain why:</label>
+        <input type="text" id="excessiverentexplanation" onchange="modtext(this)" autoquote><br>
+        <input type="submit" value="Submit">
+      </div>
+    </section>
+
+    <section id="4c">
+      <h4>4c. Do you have other vital statements to offer?</h4>
+      <select id="vitalstatement" onchange='modselector(this)'>
+        <option value="unknown"></option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select><br><br>
+      <div id="vitalstatement(yes)" style="display:none">
+        <label for="vitalstatementexplanation">Please provide details:</label>
+        <input type="text" id="vitalstatementexplanation" onchange="modtext(this)" autoquote><br>
+        <input type="submit" value="Submit">
+      </div>
+    </section>
+
+
+    <!--    SECTION 5: DEFENDENT REQUESTS   -->
+
+    <section id="5c">
+      <h4>If you hired an attorney for this case, would you like to request reasonable attorney fees from your landlord?</h4>
+      <select id="attorneyfeerequest" onchange='modselector(this)'>
+        <option value="unknown"></option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select><br><br>
+    </section>
+
+    <section id="5d">
+      <h4>Would you like to request that your landlord make necessary repairs and in the meantime reduce rent to a reasonable level given defects?</h4>
+      <select id="repairandreducedrentrequest" onchange='modselector(this)'>
+        <option value="unknown"></option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select><br><br>
+    </section>
+
+    <section id="5e">
+      <h4>Is there anything else you want to request?</h4>
+      <select id="otherrequests" onchange='modselector(this)'>
+        <option value="unknown"></option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select><br><br>
+      <div id="otherrequests(yes)" style="display:none">
+        <label for="otherrequestsexplanation">Please list your other requests below:</label>
+        <input type="text" id="otherrequestsexplanation" onchange="modtext(this)" autoquote><br>
+        <input type="submit" value="Submit">
+      </div>
+    </section>
 
     </main>
 
@@ -430,8 +644,8 @@
       %%%KEEPING TRACK OF EACH CHECKBOX%%%
 
       %%% QUESTION 3A -- BREACH OF WARRANT OF HABITABILITY %%%
- 
- 
+
+
       value(informedlandlord, A) :- informedlandlord(A)
       select(informedlandlord, A) :: informedlandlord(A)
       select(informedlandlord, A) :: informedlandlord(B) ==> ~informedlandlord(B)
@@ -455,6 +669,7 @@
 
 
       style(govrepairdetails, display, "") :- govrepair(1)
+
             %%% QUESTION 3B -- REPAIR AND DEDUCT %%%
 
       value(govrepair, A) :- govrepair(A)
@@ -487,7 +702,133 @@
       select(repairnodeduct, A) :: repairnodeduct(B) ==> ~repairnodeduct(B)
 
 
+      %%% QUESTION 3N -- cases before 10/1/2021: Non-financial eviction %%%
+      value(nonfinancialunjustcause, A) :- nonfinancialunjustcause(A)
+      select(nonfinancialunjustcause, A) :: nonfinancialunjustcause(A)
+      select(nonfinancialunjustcause, A) :: nonfinancialunjustcause(B) ==> ~nonfinancialunjustcause(B)
+
+      %%% QUESTION 3O -- COVID ERA VIOLATION %%%
+      value(covidviolation, A) :- covidviolation(A)
+      select(covidviolation, A) :: covidviolation(A)
+      select(covidviolation, A) :: covidviolation(B) ==> ~covidviolation(B)
+
+      %%% QUESTION 3P -- CDC MORATORIUM %%%
+      value(cdcmoratorium, A) :- cdcmoratorium(A)
+      select(cdcmoratorium, A) :: cdcmoratorium(A)
+      select(cdcmoratorium, A) :: cdcmoratorium(B) ==> ~cdcmoratorium(B)
+      style(cdcmoratorium(yes), display, "") :- cdcmoratorium(yes)
+      style(cdcmoratorium(yes), display, none) :- ~cdcmoratorium(yes)
+
+      %%% QUESTION 3Q -- CARES ACT VIOLATION%%%
+      value(caresviolation, A) :- caresviolation(A)
+      select(caresviolation, A) :: caresviolation(A)
+      select(caresviolation, A) :: caresviolation(B) ==> ~caresviolation(B)
+      style(caresviolation(yes), display, "") :- caresviolation(yes)
+      style(caresviolation(yes), display, none) :- ~caresviolation(yes)
+
+      value(caresviolation1, A) :- caresviolation1(A)
+      select(caresviolation1, A) :: caresviolation1(A)
+      select(caresviolation1, A) :: caresviolation1(B) ==> ~caresviolation1(B)
+
+      value(caresviolation2, A) :- caresviolation2(A)
+      select(caresviolation2, A) :: caresviolation2(A)
+      select(caresviolation2, A) :: caresviolation2(B) ==> ~caresviolation2(B)
+
+      value(forbearance, A) :- forbearance(A)
+      select(forbearance, A) :: forbearance(A)
+      select(forbearance, A) :: forbearance(B) ==> ~forbearance(B)
+
+      value(caresact30daynotice, A) :- caresact30daynotice(A)
+      select(caresact30daynotice, A) :: caresact30daynotice(A)
+      select(caresact30daynotice, A) :: caresact30daynotice(B) ==> ~caresact30daynotice(B)
+
+      %%% QUESTION 3R -- IMPROPER USE OF TENANT PAYMENT %%%
+      value(improperuseofpayment, A) :- improperuseofpayment(A)
+      select(improperuseofpayment, A) :: improperuseofpayment(A)
+      select(improperuseofpayment, A) :: improperuseofpayment(B) ==> ~improperuseofpayment(B)
+      style(improperuseofpayment(yes), display, "") :- improperuseofpayment(yes)
+      style(improperuseofpayment(yes), display, none) :- ~improperuseofpayment(yes)
+
+      %%% QUESTION 3S -- REFUSAL OF THIRD PARTY PAYMENT %%%
+      value(refusethirdpartypayment, A) :- refusethirdpartypayment(A)
+      select(refusethirdpartypayment, A) :: refusethirdpartypayment(A)
+      select(refusethirdpartypayment, A) :: refusethirdpartypayment(B) ==> ~refusethirdpartypayment(B)
+      style(refusethirdpartypayment(yes), display, "") :- refusethirdpartypayment(yes)
+      style(refusethirdpartypayment(yes), display, none) :- ~refusethirdpartypayment(yes)
+
+      %%% QUESTION 3T -- FAILURE TO PROVIDE DISABILITY ACCOMMODATION %%%
+      value(nodisabilityaccommodation, A) :- nodisabilityaccommodation(A)
+      select(nodisabilityaccommodation, A) :: nodisabilityaccommodation(A)
+      select(nodisabilityaccommodation, A) :: nodisabilityaccommodation(B) ==> ~nodisabilityaccommodation(B)
+      style(nodisabilityaccommodation(yes), display, "") :- nodisabilityaccommodation(yes)
+      style(nodisabilityaccommodation(yes), display, none) :- ~nodisabilityaccommodation(yes)
+
+      %%% QUESTION 3U -- OTHER DEFENSES AND OBJECTIONS %%%
+      value(otherdefenses, A) :- otherdefenses(A)
+      select(otherdefenses, A) :: otherdefenses(A)
+      select(otherdefenses, A) :: otherdefenses(B) ==> ~otherdefenses(B)
+      style(otherdefenses(yes), display, "") :- otherdefenses(yes)
+      style(otherdefenses(yes), display, none) :- ~otherdefenses(yes)
+
+        %%% SECTION 4 %%%
+      %%% QUESTION 4A -- VACATED PREMISES %%%
+      value(vacated, A) :- vacated(A)
+      select(vacated, A) :: vacated(A)
+      select(vacated, A) :: vacated(B) ==> ~vacated(B)
+      style(vacated(yes), display, "") :- vacated(yes)
+      style(vacated(yes), display, none) :- ~vacated(yes)
+
+      %%% QUESTION 4B -- EXCESSIVE RENT %%%
+      value(excessiverent, A) :- excessiverent(A)
+      select(excessiverent, A) :: excessiverent(A)
+      select(excessiverent, A) :: excessiverent(B) ==> ~excessiverent(B)
+      style(excessiverent(yes), display, "") :- excessiverent(yes)
+      style(excessiverent(yes), display, none) :- ~excessiverent(yes)
+
+      %%% QUESTION 4C -- OTHER VITAL STATEMENTS %%%
+      value(vitalstatement, A) :- vitalstatement(A)
+      select(vitalstatement, A) :: vitalstatement(A)
+      select(vitalstatement, A) :: vitalstatement(B) ==> ~vitalstatement(B)
+      style(vitalstatement(yes), display, "") :- vitalstatement(yes)
+      style(vitalstatement(yes), display, none) :- ~vitalstatement(yes)
+
+      %%% SECTION 5 %%%
+
+    %%% QUESTION 5C -- REASONABLE ATTORNEY FEES REQUEST %%%
+    value(attorneyfeerequest, A) :- attorneyfeerequest(A)
+    select(attorneyfeerequest, A) :: attorneyfeerequest(A)
+    select(attorneyfeerequest, A) :: attorneyfeerequest(B) ==> ~attorneyfeerequest(B)
+
+    %%% QUESTION 5D -- REQUEST REPAIRS AND REDUCED RENT WHILE REPAIRS ARE BEING MADE %%%
+    value(repairandreducedrentrequest, A) :- repairandreducedrentrequest(A)
+    select(repairandreducedrentrequest, A) :: repairandreducedrentrequest(A)
+    select(repairandreducedrentrequest, A) :: repairandreducedrentrequest(B) ==> ~repairandreducedrentrequest(B)
+
+    %%% QUESTION 5E -- OTHER REQUESTS %%%
+    value(otherrequests, A) :- otherrequests(A)
+    select(otherrequests, A) :: otherrequests(A)
+    select(otherrequests, A) :: otherrequests(B) ==> ~otherrequests(B)
+    style(otherrequests(yes), display, "") :- otherrequests(yes)
+    style(otherrequests(yes), display, none) :- ~otherrequests(yes)
+
     </textarea>
+    <!-- NEED TO FIGURE OUT LOGIC FOR CHECKBOXES!!!
+    value(CARESviolation1, A) :- CARESviolation1(A)
+    select(CARESviolation1, A) :: CARESviolation1(A)
+    select(CARESviolation1, A) :: CARESviolation1(B) ==> ~CARESviolation1(B)
+
+    value(CARESviolation2, A) :- CARESviolation2(A)
+    select(CARESviolation2, A) :: CARESviolation2(A)
+    select(CARESviolation2, A) :: CARESviolation2(B) ==> ~CARESviolation2(B)
+
+    value(forbearance, A) :- forbearance(A)
+    select(forbearance, A) :: forbearance(A)
+    select(forbearance, A) :: forbearance(B) ==> ~forbearance(B)
+
+    value(CARESact30daynotice, A) :- CARESact30daynotice(A)
+    select(CARESact30daynotice, A) :: CARESact30daynotice(A)
+    select(CARESact30daynotice, A) :: CARESact30daynotice(B) ==> ~CARESact30daynotice(B) -->
+
     <!--=======================================================================-->
   </body>
 </html>

@@ -1,0 +1,368 @@
+
+<html>
+
+<!--=======================================================================-->
+
+<head>
+  <title>Introduction to Worksheets - Chapter 2</title>
+  <script type='text/javascript' src='http://epilog.stanford.edu/epilog/javascript/epilog.js'></script>
+  <script type='text/javascript' src='http://epilog.stanford.edu/worksheets/javascript/worksheets.js'></script>
+</head>
+
+<!--=======================================================================-->
+
+<body id='page' style='background-color:#990000' onload='initialize()'>
+  <center>
+    <table width='720' cellspacing='0' cellpadding='0' bgcolor='#ffffff'>
+      <tr>
+        <td>
+
+<!--=======================================================================-->
+
+  <center>
+    <br/>
+    <br/>
+    <table width='640' height='60' cellspacing='1' cellpadding='0'>
+      <tr>
+        <td style='font-size:18pt;text-align:center'>Chapter 2</td>
+      </tr>
+      <tr>
+        <td style='font-size:20pt;text-align:center'>Reactive Worksheets</td>
+      </tr>
+    </table>
+    <br/>
+  </center>
+
+<!--=======================================================================-->
+
+<center>
+  <br/>
+  <table width='640' cellpadding='0'>
+    <tr>
+      <td>
+
+<!--=======================================================================-->
+
+<h3>2.1 Introduction</h3>
+
+<p>In this chapter, we look at the essential elements of simple <i>reactive worksheets</i>, i.e. worksheets in which behavior is defined directly in terms of visible features and user gestures.</p>
+
+<p>There are four main topics that we need to cover - (1) the representation of page data as <i>factoids</i>, (2) the representation of user gestures as actions, (3) the use of operation definitions to specify how page data changes in response to user gestures, and (4) the use of view definitions to specify how visible features change in response to user gestures.  After discussing these topics, we put all of the pieces together and show how to convert an arbitrary HTML page into a functional worksheet.</p>
+
+<!--=======================================================================-->
+
+<h3>2.2 Page Data</h3>
+
+<p>The data underlying a web page appearing in a browser typically takes the form of a hierarchical data structure called a <i>DOM</i> (short for <i>Document Object Model</i>).  The top node in this data structure represents the document, and its child nodes represent its components.  Nodes in the DOM typically have attributes of various sorts (e.g. the width and height of a table); and, in some cases, those attributes are objects with attributes of their own (e.g. the style attribute of a node has attributes of its own (e.g. font family, font size, and so forth).</p>
+
+<p>In order to use Dynamic Logic Programming to specify the appearance and behavior of a webpage, we need vocabulary to represent the state of a DOM in the form of factoids that express this state.</p>
+
+<p>First of all, we assign identifiers for the nodes of the DOM that we care about.  In order to give them meaning, we assign each of our identifiers as the value of the <tt>id</tt> attribute of the corresponding node.  For example, if we wanted to use the identifier <tt>myinput</tt> to refer to the input element in the HTML fragment shown below, we would list that identifier as the <tt>id</tt> attribute of that input widget, as shown in this example.</p>
+
+<xmp><center>
+  <input id='myinput' type='text' value='hello' size='30' style='color:black'/>
+</center>
+</xmp>
+
+<p>Next, we invent predicates to describe the various properties of these nodes.  See below for the most commonly used predicates.  For example, we use the binary predicate <tt>value</tt> to associate an input node (type-in field or selector) with its value.</p>
+
+<center>
+  <table width='600'>
+    <tr><td>
+<dl>
+  <dt><tt>value(</tt><i>widget</i><tt>,</tt><i>value</i><tt>)</tt>: This factoid is true whenever the value associated with <i>widget</i> is <i>value</i>.  The widget here may be a text field, selector, radio button field, slider, and so forth.</dt>
+  <br/>
+  <dt><tt>holds(</tt><i>widget</i><tt>,</tt><i>value</i><tt>)</tt>: This factoid is true whenever one of the values associated with <i>widget</i> is <i>value</i>.  The widget in this case multi-valued selector or a checkbox field.</dt>
+  <br/>
+  <dt><tt>attribute(</tt><i>widget</i><tt>,</tt><i>property</i><tt>,</tt><i>value</i><tt>)</tt>: This factoid is true whenever the <i>property</i> attribute of <i>widget</i> is <i>value</i>.</dt>
+  <br/>
+  <dt><tt>style(</tt><i>widget</i><tt>,</tt><i>property</i><tt>,</tt><i>value</i><tt>)</tt>: This factoid is true whenever the <i>property</i> style of <i>widget</i> is <i>value</i>.</dt>
+  <br/>
+  <dt><tt>innerhtml(</tt><i>widget</i><tt>,</tt><i>content</i><tt>)</tt>: This factoid is true whenever the <i>innerHTML</i> <i>widget</i> is <i>content</i>.  Note that <i>content</i> must be a string of characters.</dt>
+</dl>
+    </td></tr>
+  </table>
+</center
+
+<p>Given this vocabulary, we can encode relevant information in the form of a dataset.  For example, the relevant state of the DOM fragment shown above can be represented by the dataset shown below.</p>
+
+<center>
+  <table width='600' style='font-family:courier;font-size:14px'>
+    <tr><td>value(myinput,hello)</td></tr>
+    <tr><td>attribute(myinput,size,30)</td></tr>
+    <tr><td>style(myinput,color,black)</td></tr>
+  </table>
+</center>
+
+<!--=======================================================================-->
+
+<h3>2.3 Gestures</h3>
+
+<p>User interaction with a webpage takes the form of <i>gestures</i> (e.g. keystrokes and mouse-clicks).  In order to talk about these gestures, we need appropriate vocabulary.  For example, we use the unary operation <tt>click</tt> to represent the action of clicking on a button.  We use the binary operation <tt>select</tt> to represent the action of selecting a specific option from a selector.</p>
+
+<center>
+  <table width='600'>
+    <tr><td>
+<dl>
+  <dt><tt>select(</tt><i>widget</i><tt>,</tt><i>value</i><tt>)</tt>: This action occurs when the user enters or selects <i>value</i> as the value of <i>widget</i>.  The widget here may be an object or text field, a selector, a multi-valued menu, a checkbox field, a radio button field, a slider, and so forth.</dt>
+  <br/>
+  <dt><tt>deselect(</tt><i>widget</i><tt>,</tt><i>value</i><tt>)</tt>: This action occurs when the user erases or deselects <i>value</i> as the value of <i>widget</i>.</dt>
+  <br/>
+  <dt><tt>click(</tt><i>widget</i><tt>)</tt>: This action occurs when the user clicks on <i>widget</i>.</dt>
+  <br/>
+  <dt><tt>tick</tt>: This action occurs periodically.  By default, this happens once per second.  It is also happens when the user clicks the Run button or the Step button in a simulation control box.<!--  (See the Worksheets manual for more information.)--></dt>
+  <br/>
+  <dt><tt>load</tt>: This action occurs when a page is first loaded.</dt>
+  <br/>
+  <dt><tt>unload</tt>: This action occurs when a user leaves a page.</dt>
+</dl>
+    </td></tr>
+  </table>
+</center
+
+<p>We use this vocabulary to represent user gestures.  For example, if the user clicks a button with identifier <tt>a</tt>, we represent this as the action <tt>click(a)</tt>.  If the user selects <tt>3</tt> from a selector with identifier <tt>b</tt>, we represent this as <tt>select(b,3)</tt>.</p>
+
+<!--=======================================================================-->
+
+<h3>2.4 Operation Definitions</h3>
+
+<p>Given a vocabulary for encoding data and gestures, we can describe the behavior of a worksheet by writing suitable operator definitions.  The following examples illustrate how this can be done.</p>
+
+<p>Consider the following buttons with identifiers <tt>orange</tt>, <tt>blue</tt>, <tt>purple</tt>, and <tt>black</tt>.</p>
+
+<center>
+  <input type="button" id="orange" value="orange" onclick="modbutton(this)"/>
+  <input type="button" id="blue" value=" blue " onclick="modbutton(this)"/>
+  <input type="button" id="purple" value="purple" onclick="modbutton(this)"/>
+  <input type="button" id="black" value="black " onclick="modbutton(this)"/>
+</center>
+
+<p>Suppose that we wanted the worksheet to change the color of this document (identified as <tt>page</tt>) whenever the user clicks one of these buttons.  (Try clicking one of the buttons to see the desired effect.) This behavior can be described with the following operation definition.</p>
+
+<center>
+  <table width='600' style='font-family:courier;font-size:14px'>
+    <tr><td>click(orange) :: style(page,color,orange)</td></tr>
+    <tr><td>click(blue) :: style(page,color,blue)</td></tr>
+    <tr><td>click(purple) :: style(page,color,purple)</td></tr>
+    <tr><td>click(black) :: style(page,color,black)</td></tr>
+  </table>
+</center>
+
+<p>Alternatively, we can write these rules more compactly by using a variable, as shown below.</p>
+
+<center>
+  <table width='600' style='font-family:courier;font-size:14px'>
+    <tr><td>click(X) :: style(page,color,X)</td></tr>
+  </table>
+</center>
+
+<p>This rule reads as follows.  If a user clicks on button with <tt>X</tt> as <tt>id</tt>, then, in the next state of the worksheet, the <tt>color</tt> style of the node identified as <tt>page</tt> should be <tt>X</tt>.</p>
+
+<p>Although these operation definitions work fine, they are not quite complete.  This is because, after clicking the above buttons, the state of our worksheet may include more than one fact of the form <tt>style(page,color,X)</tt>. To completely specify the desired behavior, we need to remove the existing style factoids for <tt>page</tt> when a button is clicked.  This can be done with the following operation definition.</p>
+
+<center>
+  <table width='600' style='font-family:courier;font-size:14px'>
+    <tr><td>click(X) :: style(page,color,Y) & distinct(X,Y) ==> ~style(page,color,Y)</td></tr>
+  </table>
+</center>
+
+<p>This rule reads as follows.  If a user clicks on button <tt>X</tt>, and the <tt>color</tt> of <tt>page</tt> is <tt>Y</tt>, and <tt>Y</tt> is different from <tt>X</tt>, then in the next state of the worksheet, the <tt>color</tt> of <tt>page</tt> should not be <tt>Y</tt>. </p>
+
+<p>Now consider another example.  Here we replace the four buttons with a selector with identifier <tt>pagecolor</tt> and four options <tt>orange</tt>, <tt>blue</tt>, <tt>purple</tt>, and <tt>black</tt>.</p>
+
+<center>
+  <select id='pagecolor' onchange='modselector(this)'>
+    <option>orange</option>
+    <option>blue</option>
+    <option>purple</option>
+    <option selected>black</option>
+  </select>
+</center>
+
+<p>Let's suppose that we would like to change the text color of this document based on the value selected.  We can describe this behavior with the following rules.</p>
+
+<center>
+  <table width='600' style='font-family:courier;font-size:14px'>
+    <tr><td>select(pagecolor,X) :: style(page,color,X)</td></tr>
+    <tr><td>select(pagecolor,X) :: style(page,color,Y) ==> ~style(page,color,Y)</td></tr>
+  </table>
+</center>
+
+<p>The first rule states that, if a user selects value <tt>X</tt> for <tt>pagecolor</tt>, then <tt>style(page,color,X)</tt> should be true in the next state, i.e. the text color of the page should be <tt>X</tt>.  The second rule say that, if a user selects value <tt>X</tt> for <tt>pagecolor</tt> and the <tt>style</tt> of <tt>page</tt> is <tt>Y</tt> and <tt>Y</tt> is different from <tt>X</tt>, then <tt>style(page,color,X)</tt> should <i>not</i> be true in the next state.</p>
+
+<p>Unfortunately, this is not quite enough.  Our action changes the color of the page, but there is nothing changing the value of the <tt>pagecolor</tt> attribute.  As a result, it will reset to black after the gesture is processed.  The following operation definition rules update the selector.<p>
+
+<center>
+  <table width='600' style='font-family:courier;font-size:14px'>
+    <tr><td>select(pagecolor,X) :: value(pagecolor,X)</td></tr>
+    <tr><td>select(pagecolor,X) :: value(pagecolor,Y) ==> ~value(pagecolor,Y)</td></tr>
+  </table>
+</center>
+
+<p>As a final illustration, let's look at an example of interactions between input widgets.  The operation definition rules for the four buttons in the first example change the color of the page correctly.  However, they do not update the color indicated in the selector.</p>
+
+<p>The operation definition shown below prescribes the desired behavior.  When the user clicks a button with identifier <tt>X</tt>, then we want the value of the value of the selector to be updated and we want any previous value to be removed.</p>
+
+<center>
+  <table width='600' style='font-family:courier;font-size:14px'>
+    <tr><td>click(X) :: value(pagecolor,X)</td></tr>
+    <tr><td>click(X) :: value(pagecolor,Y) ==> ~value(pagecolor,Y)</td></tr>
+  </table>
+</center>
+
+<p>Combining these rules with the rules shown above allows the user to click either the buttons or make selections and get the same effects in both cases.</p>
+
+<!--=======================================================================-->
+
+<h3>2.5 View Definitions</h3>
+
+<p>In the preceding section, we saw that a single gesture can have multiple effects.  For example, changing the value of a selector named <tt>pagecolor</tt> sets the value of the selector <i>and</i> changes the color of the page.  To implement this behavior, we need to manage both conditions in our operation definitions, and we need to store both conditions in our dataset.  Moreover, if we are not careful, our definitions might get out of sync with each other, and we would not get the behavior we want.</p>
+
+<p>The good news is that it is sometimes possible to use <i>view definitions</i> to describe such behavior more economically and in a way that is less prone to mistakes.  By defining some of our predicates as <i>views</i> of other predicates, we do not need to store as much information and we can get by with fewer operation definition rules.</p>
+
+<p>In the case from the preceding section, suppose that we were to define the color of the <tt>page</tt> node in terms of the value of the <tt>pagecolor</tt> node.  The definition is shown below.</p>
+
+<center>
+  <table width='600' style='font-family:courier;font-size:14px'>
+    <tr><td>style(page,color,X) :- value(pagecolor,X)</td></tr>
+  </table>
+</center>
+
+<p>With this definition in place, we could replace the operation definition rules shown in the last section with the four shown below.</p>
+
+<center>
+  <table width='600' style='font-family:courier;font-size:14px'>
+    <tr><td>click(X) :: value(pagecolor,X)</td></tr>
+    <tr><td>click(X) :: value(pagecolor,Y) ==> ~value(pagecolor,Y)</td></tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr><td>select(pagecolor,X) :: value(pagecolor,X)</td></tr>
+    <tr><td>select(pagecolor,X) :: style(page,color,Y) ==> ~value(pagecolor,Y)</td></tr>
+  </table>
+</center>
+
+<p>There are fewer rules here, and they mention fewer predicates.  In particular, there is no mention of the style of the <tt>page</tt>.  That property is fully determined by the value of <tt>pagecolor</tt>, and so we do not need to store or update this information in our rules.  Instead, the worksheet computes the style using the view definition given above.</p>
+
+<!--=======================================================================-->
+
+<h3>2.6 Putting It All Together</h3>
+
+<p>The easiest way to create a web-based interactive worksheet is to start with an HTML page and to add mark-up code to enable the functionality described here.  The following is an example of an interactive worksheet built in this way.  The page has some introductory text and a selector that lists four different colors.  Making a different selection changes the the introductory text to the corresponding color.</p>
+
+<xmp>
+<html>
+  <head>
+    <title>Simple Reactive Worksheet</title>
+    <script type='text/javascript'
+      src='http://worksheets.stanford.edu/epilog/javascript/epilog.js'>
+    </script>
+    <script type='text/javascript'
+      src='http://worksheets.stanford.edu/worksheets/javascript/worksheets.js'>
+    </script>
+  </head>
+  <body onload='initialize()'>
+    <span id='mytext'>The following selector changes my color.</span><br/>
+    <select id='textcolor' onchange='modselector(this)'>
+      <option>orange</option>
+      <option>blue</option>
+      <option>purple</option>
+      <option>black</option>
+    </select>
+  </body>
+  <dataset id='lambda'>
+    value(textcolor,black)
+  </dataset>
+  <ruleset id='library'>
+    select(textcolor,X) :: value(textcolor,X)
+    select(textcolor,X) :: value(textcolor,Y) ==> ~value(textcolor,Y)
+
+    style(mytext,color,X) :- value(textcolor,X)
+  </ruleset>
+</html>
+</xmp>
+
+<p>This example illustrates the five things that must be done to convert an ordinary HTML page into an interactive worksheet.</p>
+
+<p>First of all, the page must include directives to load the appropriate javascript libraries - the Epilog inference engine and the Worksheets code.  This is accomplished in this example by the following lines in the head of the document.
+
+<xmp>
+    <script type='text/javascript'
+      src='http://epilog.stanford.edu/epilog/javascript/epilog.js'>
+    </script>
+    <script type='text/javascript'
+      src='http://logicprogramming.stanford.edu/worksheets/javascript/worksheets.js'>
+    </script>
+</xmp>
+
+<p>Second, the worksheet must be initialized.  This is accomplished by adding the Javascript code <tt>initialize()</tt> to the <tt>onload</tt> attribute of the body of the document, as shown below.</p>
+
+<xmp>
+  <body onload='initialize()'>...</body>
+</xmp>
+
+<p>Third, as mentioned in an earlier section, every node that we want to control and every input widget that we want to handle must be given an <tt>id</tt>.  In this case, the introductory text is named <tt>mytext</tt>.</p> 
+
+<xmp>
+  <span id='mytext'>...</span>
+</xmp>
+
+<p>Fourth, every input widget that we want to handle must be given an appropriate handler attribute.  As described earlier, the specific handler must correspond to the type of the node.  For example, a button would have <tt>modbutton(this)</tt> as its <tt>onclick</tt> attribute, and a selector would have <tt>modselector(this)</tt> as its <tt>onchange</tt> attribute.</p>
+
+<xmp>
+  <select id='textcolor' onchange='modselector(this)'>...</select>
+</xmp>
+
+<p>Finally, we need to supply any initial data and our view defintions and operation definitions.  The initial data is specified in a <tt>dataset</tt> element, and the rules are specified in a <tt>ruleset</tt> element.  The dataset element typically has <tt>id</tt> set to <tt>lambda</tt>, and the ruleset element typically has <tt>id</tt> set to <tt>library</tt>.  Furthermore, it is customary to specify a display style of <tt>none</tt> on these elements to prevent them from appearing to the user.</p>
+
+<xmp>
+  <dataset id='lambda' style='display:none'>
+    value(textcolor,black)
+  </dataset>
+  <ruleset id='library' style='display:none'>
+    select(textcolor,X) :: value(textcolor,X)
+    select(textcolor,X) :: value(textcolor,Y) ==> ~value(textcolor,Y)
+
+    style(mytext,color,X) :- value(textcolor,X)
+  </ruleset>
+</xmp>
+
+<p>Try saving the text at the beginning of this section as a file, load the file in a browser, and play around with it.  Change the file in various ways and see what happens.  For example, add additional options to the selector, additional text nodes, additional widgets, and so forth.  Try changing the initial data and/or the rules.</p>
+
+<!--=======================================================================-->
+
+      </td>
+    </tr>
+  </table>
+  <br/>
+</center>
+
+<!--=======================================================================-->
+
+        </td>
+      </tr>
+    </table>
+  </center>
+</body>
+
+<!--=======================================================================-->
+
+<textarea id='lambda' type='text/hrf' style='display:none'>
+value(pagecolor,black)
+style(page,color,black)
+</textarea>
+
+<textarea id='library' type='text/hrf' style='display:none'>
+click(X) :: style(page,color,X)
+click(X) :: value(pagecolor,X)
+click(X) :: value(pagecolor,Y) ==> ~value(pagecolor,Y)
+click(X) :: style(page,color,Y) ==> ~style(page,color,Y)
+
+select(pagecolor,X) :: value(pagecolor,X) & style(page,color,X)
+select(pagecolor,X) :: style(page,color,Y) ==> ~value(pagecolor,Y) & ~style(page,color,Y)
+
+click(clear) :: value(pagecolor,black) & style(page,color,black)
+click(clear) :: style(page,color,Y) ==> ~style(page,color,Y)
+</textarea>
+
+<!--=======================================================================-->
+
+</html>
