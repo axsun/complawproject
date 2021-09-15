@@ -1,10 +1,10 @@
 /* Global styles
 ------------------------------------*/
 body {
-  border-style: solid;
-  border-color: darkred;
   margin: 40px;
   padding: 40px;
+  font-size: 16px;
+  font-family: sans-serif;
 }
 
 .content-wrap{
@@ -28,4 +28,32 @@ form.y{
 
 form.n{
   visibility:hidden;
+}
+
+/* Navbar ------------------------------*/
+.navbar{
+  background: #C8EFEF;
+  overflow: hidden;
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navbar a:hover{
+  background: #00B3B2;
+  color: white;
+}
+.navbar a{
+  color: #1a1d1d;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  float:left;
+  font-size: 17px;
+}
+
+.navbar a.active {
+  background-color: #00B3B2;
+  color: black;
 }
