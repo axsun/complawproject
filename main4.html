@@ -58,7 +58,7 @@
           <input type="text" id="attorneytelnum" onchange="modtext(this)" autoquote><br><br>
           <label for="attorneyemail">Email Address:</label>
           <input type="text" id="attorneyemail" onchange="modtext(this)" autoquote><br><br>
-          <input type="submit" value="Submit">
+          <input type="submit" class="savebutton" value="Save">
           <!--           </form> -->
           <hr>
         </section>
@@ -76,7 +76,7 @@
           <input type="text" id="residenttelnum" onchange="modtext(this)" autoquote><br><br>
           <label for="residentemail">Email Address:</label>
           <input type="text" id="residentemail" onchange="modtext(this)" autoquote><br><br>
-          <input type="submit" value="Submit">
+          <input type="submit" class="savebutton" value="Save">
           <!-- </form> -->
           <hr>
         </section>
@@ -128,7 +128,7 @@
           <section id="disagreewithassertions(yes)" style="display:none">
             <label>Please list specific paragraphs of your landlord's assertions that you disagree with:</label>
             <input type="text" id="assertiondenialslist" onchange="modtext(this)" autoquote></input><br><br>
-            <input type="submit" value="Submit"><br><br>
+            <input type="submit" class="savebutton" value="Save"><br><br>
           </section>
 
           <label>Are there some parts of the claim that you deny because you just don't know about assertions made by your
@@ -142,7 +142,7 @@
           <section id="unsureassertions(yes)" style="display:none">
             <label>Please list specific paragraphs of your landlord's assertions that you don't know about:</label>
             <input type="text" id="unknownassertionslist" onchange="modtext(this)" autoquote></input><br><br>
-            <input type="submit" value="Submit"><br><br>
+            <input type="submit" class="savebutton" value="Save"><br><br>
           </section>
           <hr>
 
@@ -165,7 +165,7 @@
             <div id="falsecoversheet(yes)" style="display:none">
               <label>Please list relevant paragraphs of the mandatory cover sheet that are false:</label>
               <input type="text" id="unknownassertionslist" onchange="modtext(this)" autoquote></input><br><br>
-              <input type="submit" value="Submit"><br><br>
+              <input type="submit" class="savebutton" value="Save"><br><br>
             </div>
             <label>Were there any statements made in the mandatory cover sheet that you didn't know anything
               about?</label>
@@ -177,7 +177,7 @@
             <div id="unsurecoversheet(yes)" style="display:none">
               <label>Please list relevant paragraphs of the mandatory cover sheet that you are unsure about:</label>
               <input type="text" id="unknownassertionslist" onchange="modtext(this)" autoquote></input><br><br>
-              <input type="submit" value="Submit"><br><br>
+              <input type="submit" class="savebutton" value="Save"><br><br>
             </div>
             <hr>
           </section>
@@ -204,7 +204,160 @@
             <option value="1">Yes</option>
             <option value="0">No</option>
           </select><br><br>
+        </section>
 
+          <!--Question 3m -->
+
+        <section id="3m">
+         <h4>3m.  Is the basis for evicting you nonpayment of rent during the COVID period (March 2020-June 2021)?
+         </h4>
+         <select id="covidfinancialobligation" onchange='modselector(this)'>
+           <option value="unknown"></option>
+           <option value="1">Yes</option>
+           <option value="0">No</option>
+         </select><br><br>
+         <div id="covidfinancialobligation(yes)" style="display:none">
+           <h4>3m.1 Were you served a general notice of your rights under the COVID-19 Tenants Relief Act?</h4>
+             <select id="covidnoticeofrights" onchange='modselector(this)'>
+           <option value="unknown"></option>
+           <option value="0">Yes</option>
+           <option value="1">No</option>
+         </select><br><br>
+         <div id="covidnoticeofrights(yes)" style="display:none">
+           <label for="covidnoticeofrightsexplanation">Please provide details or documents: </label>
+           <input type="text" id="covidnoticeofrightsexplanation" onchange="modtext(this)" autoquote><br><br>
+           <input type="submit" class="savebutton" value="Save">
+           <br></br>
+           <form id="upload3m1" action="upload.php" method="post" enctype="multipart/form-data">
+             <input type="file" name="file" size="50" />
+             <br />
+             <input type="submit" class="savebutton" value="Upload" />
+           </form>
+         </div>
+         <h4>3m.2 Were you served the required 15-day notice?
+         </h4>
+         <select id="15daynotice" onchange='modselector(this)'>
+           <option value="unknown"></option>
+           <option value="0">Yes</option>
+           <option value="1">No</option>
+         </select><br><br>
+         <div id="15daynotice(yes)" style="display:none">
+           <label for="15daynoticeexplanation">Please provide details or documents: </label>
+           <input type="text" id="15daynoticeexplanation" onchange="modtext(this)" autoquote><br><br>
+           <input type="submit" class="savebutton" value="Save">
+           <br></br>
+           <form id="upload3m2" action="upload.php" method="post" enctype="multipart/form-data">
+             <input type="file" name="file" size="50" />
+             <br />
+             <input type="submit" class="savebutton" value="Upload" />
+           </form>
+         </div>
+
+
+         <h4>3m.3 Were you provided an unsigned declaration of COVID-19 financial distress during the 15-day period?
+         </h4>
+           <select id="unsigneddeclaration" onchange='modselector(this)'>
+             <option value="unknown"></option>
+             <option value="0">Yes</option>
+             <option value="1">No</option>
+           </select><br><br>
+         <div id="unsigneddeclaration(yes)" style="display:none">
+           <label for="unsigneddeclarationexplanation">Please provide details or documents: </label>
+           <input type="text" id="unsigneddeclarationexplanation" onchange="modtext(this)" autoquote><br><br>
+           <input type="submit" class="savebutton" value="Save">
+           <br></br>
+           <form id="upload3m3" action="upload.php" method="post" enctype="multipart/form-data">
+             <input type="file" name="file" size="50" />
+             <br />
+             <input type="submit" class="savebutton" value="Upload" />
+           </form>
+         </div>
+
+         <h4>3m.4 Was an unsigned declaration of COVID-19 financial distress in the legally required translation (language) provided during the 15-day period?
+         </h4>
+         <select id="documentnottranslated" onchange='modselector(this)'>
+           <option value="unknown"></option>
+           <option value="0">Yes</option>
+           <option value="1">No</option>
+         </select><br><br>
+         <div id="documentnottranslated(yes)" style="display:none">
+           <label for="documentnottranslatedexplanation">Please provide details or documents: </label>
+           <input type="text" id="documentnottranslatedexplanation" onchange="modtext(this)" autoquote><br><br>
+           <input type="submit" class="savebutton" value="Save">
+           <br></br>
+           <form id="upload3m4" action="upload.php" method="post" enctype="multipart/form-data">
+             <input type="file" name="file" size="50" />
+             <br />
+             <input type="submit" class="savebutton" value="Upload" />
+           </form>
+         </div>
+
+         <h4>3m.5   Were you identified in the notice as a “high income tenant” even though the landlord had no evidence that you were high income?
+         </h4>
+         <select id="highincometenant" onchange='modselector(this)'>
+           <option value="unknown"></option>
+           <option value="1">Yes</option>
+           <option value="0">No</option>
+         </select><br><br>
+           <div id="highincometenant(yes)" style="display:none">
+           <label for="highincometenantexplanation">Please provide details or documents: </label>
+           <input type="text" id="highincometenantexplanation" onchange="modtext(this)" autoquote><br><br>
+           <input type="submit" class="savebutton" value="Save">
+           <br></br>
+           <form id="upload3m5" action="upload.php" method="post" enctype="multipart/form-data">
+             <input type="file" name="file" size="50" />
+             <br />
+             <input type="submit" class="savebutton" value="Upload" />
+           </form>
+           </div>
+
+
+           <h4>3m.6  Were you provided appropriate notice and documentation of wealth (if identified as a wealthy tenant)?
+           </h4>
+           <select id="documentationofwealth" onchange='modselector(this)'>
+           <option value="unknown"></option>
+           <option value="1">Yes</option>
+           <option value="0">No</option>
+           </select><br><br>
+           <div id="documentationofwealth(yes)" style="display:none">
+           <label for="documentationofwealthexplanation">Please provide details or documents on when and how the documents were delivered: </label>
+           <input type="text" id="documentationofwealthexplanation" onchange="modtext(this)" autoquote><br><br>
+           <input type="submit" class="savebutton" value="Save">
+           <br></br>
+           <form id="upload3m6" action="upload.php" method="post" enctype="multipart/form-data">
+           <input type="file" name="file" size="50" />
+           <br />
+           <input type="submit" class="savebutton" value="Upload" />
+
+           </form>
+           <h4>3m.6a Does the demand for payment include payments and late fees during the covid period (March 2020-June 2021)?
+
+           </h4>
+           <select id="includescovidperiodpayments" onchange='modselector(this)'>
+           <option value="unknown"></option>
+           <option value="1">Yes</option>
+           <option value="0">No</option>
+           </select><br><br>
+
+           <h4>3m.6b Is the landlord charging you more for services, or charging for services that were not previously charged?
+
+           </h4>
+           <select id="addedservicecharges" onchange='modselector(this)'>
+           <option value="unknown"></option>
+           <option value="1">Yes</option>
+           <option value="0">No</option>
+           </select><br><br>
+
+           <h4>3m.6b Did you offer landlord payment of at least 25% of what you owed from the covid period? (March 2020-June 2021)?
+
+           </h4>
+           <select id="offered25" onchange='modselector(this)'>
+           <option value="unknown"></option>
+           <option value="1">Yes</option>
+           <option value="0">No</option>
+           </select><br><br>
+           </div>
+         </section>
 
 
         </section>
@@ -212,7 +365,7 @@
         <!--Question 3l -->
 
         <section id="3l">
-         <h4>3l. Is your landlord making up other reasons for your eviction, eventhough you believe they really are upset about unpaid rent during the COVID period (March 2020 – June 2021).
+         <h4>3l. Is your landlord making up other reasons for your eviction, even though you believe they really are upset about unpaid rent during the COVID period (March 2020 through June 2021).
          </h4>
          <select id="covidrentretaliation" onchange='modselector(this)'>
            <option value="unknown"></option>
@@ -222,16 +375,16 @@
          <div id="covidrentretaliation(yes)" style="display:none">
            <label for="covidrentretaliationexplanation">Please provide details or documents: </label>
            <input type="text" id="covidrentretaliationexplanation" onchange="modtext(this)" autoquote><br><br>
-           <input type="submit" value="Submit">
+           <input type="submit" class="savebutton" value="Save">
            <br></br>
            <form id="upload3l" action="upload.php" method="post" enctype="multipart/form-data">
              <input type="file" name="file" size="50" />
              <br />
-             <input type="submit" value="Upload" />
+             <input type="submit" class="savebutton" value="Upload" />
            </form>
           </div>
-
         </section>
+
       </div>
 
         <!-- ABOUT MONEY -->
@@ -310,7 +463,7 @@
           <form id="upload4" action="upload.php" method="post" enctype="multipart/form-data" style='display:none'>
             <input type="file" name="file" size="50" />
             <br />
-            <input type="submit" value="Upload" />
+            <input type="submit" class="savebutton" value="Upload" />
           </form>
         </div>
           <!-- 3h.3 -->
@@ -358,12 +511,12 @@
           <div id="rentafternotice(yes)" style="display:none">
             <label for="rentafternoticeexplanation">Please provide details or documents: </label>
             <input type="text" id="rentafternoticeexplanation" onchange="modtext(this)" autoquote><br><br>
-            <input type="submit" value="Submit">
+            <input type="submit" class="savebutton" value="Save">
             <br></br>
             <form id="upload3i" action="upload.php" method="post" enctype="multipart/form-data">
               <input type="file" name="file" size="50" />
               <br />
-              <input type="submit" value="Upload" />
+              <input type="submit" class="savebutton" value="Upload" />
             </form>
           </div>
 
@@ -380,7 +533,7 @@
           <label for="defendantname">Please input the name(s) of the resident(s) (separated by commas) responding to
             property owner (aka Plaintiff)</label>
           <input type="text" id="defendantname" onchange="modtext(this)" autoquote><br><br>
-          <input type="submit" value="Submit"><br><br>
+          <input type="submit" class="savebutton" value="Save"><br><br>
         </section>
 
         <section id="3ab" style='display:none'>
@@ -470,7 +623,7 @@
               <form id="upload1" action="upload.php" method="post" enctype="multipart/form-data">
                 <input type="file" name="file" size="50" />
                 <br />
-                <input type="submit" value="Upload" />
+                <input type="submit" class="savebutton" value="Upload" />
               </form>
             </div>
             <h4>Did Plaintiff increase, demand or collect rent when uninhabitable conditions exist(ed) and have not been
@@ -484,7 +637,7 @@
             <form id="upload2" action="upload.php" method="post" enctype="multipart/form-data" style='display:none'>
               <input type="file" name="file" size="50" />
               <br />
-              <input type="submit" value="Upload" />
+              <input type="submit" class="savebutton" value="Upload" />
             </form>
           </div>
       </div>
@@ -504,12 +657,12 @@
             <label for="cancelednoticeexplanation">Please describe when and how the notice to quit was changed, waived or
               canceled: </label>
             <input type="text" id="cancelednoticeexplanation" onchange="modtext(this)" autoquote><br><br>
-            <input type="submit" value="Submit">
+            <input type="submit" class="savebutton" value="Save">
             <br></br>
             <form id="upload3d" action="upload.php" method="post" enctype="multipart/form-data">
               <input type="file" name="file" size="50" />
               <br />
-              <input type="submit" value="Upload" />
+              <input type="submit" class="savebutton" value="Upload" />
             </form>
           </div>
         </section>
@@ -524,12 +677,12 @@
           <div id="retaliatory(yes)" style="display:none">
             <label for="retaliatoryexplanation">Please provide details or documents: </label>
             <input type="text" id="retaliatoryexplanation" onchange="modtext(this)" autoquote><br><br>
-            <input type="submit" value="Submit">
+            <input type="submit" class="savebutton" value="Save">
             <br></br>
             <form id="upload3e" action="upload.php" method="post" enctype="multipart/form-data">
               <input type="file" name="file" size="50" />
               <br />
-              <input type="submit" value="Upload" />
+              <input type="submit" class="savebutton" value="Upload" />
             </form>
           </div>
         </section>
@@ -544,12 +697,12 @@
           <div id="discrimination(yes)" style="display:none">
             <label for="discriminationexplanation">Please provide details or documents: </label>
             <input type="text" id="discriminationexplanation" onchange="modtext(this)" autoquote><br><br>
-            <input type="submit" value="Submit">
+            <input type="submit" class="savebutton" value="Save">
             <br></br>
             <form id="upload3f" action="upload.php" method="post" enctype="multipart/form-data">
               <input type="file" name="file" size="50" />
               <br />
-              <input type="submit" value="Upload" />
+              <input type="submit" class="savebutton" value="Upload" />
             </form>
           </div>
         </section>
@@ -574,12 +727,12 @@
             <input type="text" id="localrentviolationordinancedop" onchange="modtext(this)" autoquote><br><br>
             <label for="localrentviolationexplanation">Please provide details or documents: </label>
             <input type="text" id="localrentviolationexplanation" onchange="modtext(this)" autoquote><br><br>
-            <input type="submit" value="Submit">
+            <input type="submit" class="savebutton" value="Save">
             <br></br>
             <form id="upload3g" action="upload.php" method="post" enctype="multipart/form-data">
               <input type="file" name="file" size="50" />
               <br />
-              <input type="submit" value="Upload" />
+              <input type="submit" class="savebutton" value="Upload" />
             </form>
           </div>
         </section>
@@ -614,12 +767,12 @@
           <div id="abuse(yes)" style="display:none">
             <label for="abuseexplanation">Please provide details or documents: </label>
             <input type="text" id="abuseexplanation" onchange="modtext(this)" autoquote><br><br>
-            <input type="submit" value="Submit">
+            <input type="submit" class="savebutton" value="Save">
             <br></br>
             <form id="upload3j" action="upload.php" method="post" enctype="multipart/form-data">
               <input type="file" name="file" size="50" />
               <br />
-              <input type="submit" value="Upload" />
+              <input type="submit" class="savebutton" value="Upload" />
             </form>
           </div>
 
@@ -640,171 +793,17 @@
         <div id="emergencycall(yes)" style="display:none">
           <label for="emergencycallexplanation">Please provide details or documents as to why the call was necessary: </label>
           <input type="text" id="emergencycallexplanation" onchange="modtext(this)" autoquote><br><br>
-          <input type="submit" value="Submit">
+          <input type="submit" class="savebutton" value="Save">
           <br></br>
           <form id="upload3k" action="upload.php" method="post" enctype="multipart/form-data">
             <input type="file" name="file" size="50" />
             <br />
-            <input type="submit" value="Upload" />
+            <input type="submit" class="savebutton" value="Upload" />
           </form>
         </div>
 
       </section>
 
-
-     <!--Question 3m -->
-
-     <section id="3m">
-      <h4>3m.  Is the basis for evicting you nonpayment of rent during the COVID period (March 2020-June 2021)?
-      </h4>
-      <select id="covidfinancialobligation" onchange='modselector(this)'>
-        <option value="unknown"></option>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-      </select><br><br>
-      <div id="covidfinancialobligation(yes)" style="display:none">
-        <h4>3m.1 Were you served a general notice of your rights under the COVID-19 Tenants Relief Act?</h4>
-          <select id="covidnoticeofrights" onchange='modselector(this)'>
-        <option value="unknown"></option>
-        <option value="0">Yes</option>
-        <option value="1">No</option>
-      </select><br><br>
-      <div id="covidnoticeofrights(yes)" style="display:none">
-        <label for="covidnoticeofrightsexplanation">Please provide details or documents: </label>
-        <input type="text" id="covidnoticeofrightsexplanation" onchange="modtext(this)" autoquote><br><br>
-        <input type="submit" value="Submit">
-        <br></br>
-        <form id="upload3m1" action="upload.php" method="post" enctype="multipart/form-data">
-          <input type="file" name="file" size="50" />
-          <br />
-          <input type="submit" value="Upload" />
-        </form>
-      </div>
-      <h4>3m.2 Were you served the required 15-day notice?
-      </h4>
-      <select id="15daynotice" onchange='modselector(this)'>
-        <option value="unknown"></option>
-        <option value="0">Yes</option>
-        <option value="1">No</option>
-      </select><br><br>
-      <div id="15daynotice(yes)" style="display:none">
-        <label for="15daynoticeexplanation">Please provide details or documents: </label>
-        <input type="text" id="15daynoticeexplanation" onchange="modtext(this)" autoquote><br><br>
-        <input type="submit" value="Submit">
-        <br></br>
-        <form id="upload3m2" action="upload.php" method="post" enctype="multipart/form-data">
-          <input type="file" name="file" size="50" />
-          <br />
-          <input type="submit" value="Upload" />
-        </form>
-      </div>
-
-
-      <h4>3m.3 Were you provided an unsigned declaration of COVID-19 financial distress during the 15-day period?
-      </h4>
-        <select id="unsigneddeclaration" onchange='modselector(this)'>
-          <option value="unknown"></option>
-          <option value="0">Yes</option>
-          <option value="1">No</option>
-        </select><br><br>
-      <div id="unsigneddeclaration(yes)" style="display:none">
-        <label for="unsigneddeclarationexplanation">Please provide details or documents: </label>
-        <input type="text" id="unsigneddeclarationexplanation" onchange="modtext(this)" autoquote><br><br>
-        <input type="submit" value="Submit">
-        <br></br>
-        <form id="upload3m3" action="upload.php" method="post" enctype="multipart/form-data">
-          <input type="file" name="file" size="50" />
-          <br />
-          <input type="submit" value="Upload" />
-        </form>
-      </div>
-
-      <h4>3m.4 Was an unsigned declaration of COVID-19 financial distress in the legally required translation (language) provided during the 15-day period?
-      </h4>
-      <select id="documentnottranslated" onchange='modselector(this)'>
-        <option value="unknown"></option>
-        <option value="0">Yes</option>
-        <option value="1">No</option>
-      </select><br><br>
-      <div id="documentnottranslated(yes)" style="display:none">
-        <label for="documentnottranslatedexplanation">Please provide details or documents: </label>
-        <input type="text" id="documentnottranslatedexplanation" onchange="modtext(this)" autoquote><br><br>
-        <input type="submit" value="Submit">
-        <br></br>
-        <form id="upload3m4" action="upload.php" method="post" enctype="multipart/form-data">
-          <input type="file" name="file" size="50" />
-          <br />
-          <input type="submit" value="Upload" />
-        </form>
-      </div>
-
-      <h4>3m.5   Were you identified in the notice as a “high income tenant” even though the landlord had no evidence that you were high income?
-      </h4>
-      <select id="highincometenant" onchange='modselector(this)'>
-        <option value="unknown"></option>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-      </select><br><br>
-        <div id="highincometenant(yes)" style="display:none">
-        <label for="highincometenantexplanation">Please provide details or documents: </label>
-        <input type="text" id="highincometenantexplanation" onchange="modtext(this)" autoquote><br><br>
-        <input type="submit" value="Submit">
-        <br></br>
-        <form id="upload3m5" action="upload.php" method="post" enctype="multipart/form-data">
-          <input type="file" name="file" size="50" />
-          <br />
-          <input type="submit" value="Upload" />
-        </form>
-        </div>
-
-
-        <h4>3m.6  Were you provided appropriate notice and documentation of wealth (if identified as a wealthy tenant)?
-        </h4>
-        <select id="documentationofwealth" onchange='modselector(this)'>
-        <option value="unknown"></option>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-        </select><br><br>
-        <div id="documentationofwealth(yes)" style="display:none">
-        <label for="documentationofwealthexplanation">Please provide details or documents on when and how the documents were delivered: </label>
-        <input type="text" id="documentationofwealthexplanation" onchange="modtext(this)" autoquote><br><br>
-        <input type="submit" value="Submit">
-        <br></br>
-        <form id="upload3m6" action="upload.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" size="50" />
-        <br />
-        <input type="submit" value="Upload" />
-
-        </form>
-        <h4>3m.6a Does the demand for payment include payments and late fees during the covid period (March 2020-June 2021)?
-
-        </h4>
-        <select id="includescovidperiodpayments" onchange='modselector(this)'>
-        <option value="unknown"></option>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-        </select><br><br>
-
-        <h4>3m.6b Is the landlord charging you more for services, or charging for services that were not previously charged?
-
-        </h4>
-        <select id="addedservicecharges" onchange='modselector(this)'>
-        <option value="unknown"></option>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-        </select><br><br>
-
-        <h4>3m.6b Did you offer landlord payment of at least 25% of what you owed from the covid period? (March 2020-June 2021)?
-
-        </h4>
-        <select id="offered25" onchange='modselector(this)'>
-        <option value="unknown"></option>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-        </select><br><br>
-        </div>
-
-      </section>
 
 
 
@@ -854,7 +853,7 @@
         <div id="cdcmoratorium(yes)" style="display:none">
           <label for="cdcmoratoriumdeclaration">Please describe when and how you provided this declaration:</label>
           <input type="text" id="cdcmoratoriumdeclaration" onchange="modtext(this)" autoquote><br><br>
-          <input type="submit" value="Submit">
+          <input type="submit" class="savebutton" value="Save">
         </div>
       </section>
 
@@ -875,7 +874,7 @@
             provided less than 30 days notice for the underlying eviction action.</label><br>
           <label for="othercaresviolation">Other CARES violation:</label>
           <input type="text" id="othercaresviolation" onchange="modtext(this)" autoquote><br><br>
-          <input type="submit" value="Submit">
+          <input type="submit" class="savebutton" value="Save">
           <h4>Which of the following apply?</h4>
           <input type="checkbox" id="forbearance" value="1">
           <label for="forbearance">The property had a federally backed mortgage that was in forbearance when your
@@ -914,7 +913,7 @@
         <div id="refusethirdpartypayment(yes)" style="display:none">
           <label for="thirdpartypaymentexplanation">Please provide a description of what happened: </label>
           <input type="text" id="thirdpartypaymentexplanation" onchange="modtext(this)" autoquote><br><br>
-          <input type="submit" value="Submit">
+          <input type="submit" class="savebutton" value="Save">
         </div>
       </section>
 
@@ -928,7 +927,7 @@
         <div id="nodisabilityaccommodation(yes)" style="display:none">
           <label for="nodisabilityaccommodationexplanation">Please provide a description of what happened: </label>
           <input type="text" id="nodisabilityaccommodationexplanation" onchange="modtext(this)" autoquote><br><br>
-          <input type="submit" value="Submit">
+          <input type="submit" class="savebutton" value="Save">
         </div>
       </section>
 
@@ -942,7 +941,7 @@
         <div id="otherdefenses(yes)" style="display:none">
           <label for="otherdefensesexplanation">Please provide an explanation below: </label>
           <input type="text" id="otherdefensesexplanation" onchange="modtext(this)" autoquote><br><br>
-          <input type="submit" value="Submit">
+          <input type="submit" class="savebutton" value="Save">
         </div>
       </section>
 
@@ -967,7 +966,7 @@
         <div id="vacated(yes)" style="display:none">
           <label for="vacateddate">Please fill out the day you moved out (MM/DD/YYYY): </label>
           <input type="text" id="vacateddate" onchange="modtext(this)" autoquote>
-          <input type="submit" value="Submit">
+          <input type="submit" class="savebutton" value="Save">
         </div>
       </section>
 
@@ -981,7 +980,7 @@
         <div id="excessiverent(yes)" style="display:none">
           <label for="excessiverentexplanation">Please explain why:</label>
           <input type="text" id="excessiverentexplanation" onchange="modtext(this)" autoquote><br>
-          <input type="submit" value="Submit">
+          <input type="submit" class="savebutton" value="Save">
         </div>
       </section>
 
@@ -995,7 +994,7 @@
         <div id="vitalstatement(yes)" style="display:none">
           <label for="vitalstatementexplanation">Please provide details:</label>
           <input type="text" id="vitalstatementexplanation" onchange="modtext(this)" autoquote><br>
-          <input type="submit" value="Submit">
+          <input type="submit" class="savebutton" value="Save">
         </div>
       </section>
 
@@ -1032,7 +1031,7 @@
         <div id="otherrequests(yes)" style="display:none">
           <label for="otherrequestsexplanation">Please list your other requests below:</label>
           <input type="text" id="otherrequestsexplanation" onchange="modtext(this)" autoquote><br>
-          <input type="submit" value="Submit">
+          <input type="submit" class="savebutton" value="Save">
         </div>
       </section>
 
